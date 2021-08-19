@@ -104,10 +104,7 @@ class _EditDistributor extends State<EditDistributor> {
                           name: 'name',
                           initialValue: "${distributor.name}",
                           decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Colors.grey,
-                                    style: BorderStyle.solid)),
+                            border: AppTheme.myTheme.inputDecorationTheme.border,
                             labelText: 'Distributor Name',
                           ),
 
@@ -127,10 +124,7 @@ class _EditDistributor extends State<EditDistributor> {
                           name: 'address',
                           initialValue: "${distributor.address}",
                           decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Colors.grey,
-                                    style: BorderStyle.solid)),
+                            border: AppTheme.myTheme.inputDecorationTheme.border,
                             labelText: 'Address',
                           ),
                           validator: FormBuilderValidators.compose([
@@ -147,10 +141,7 @@ class _EditDistributor extends State<EditDistributor> {
                           name: 'email',
                           initialValue: "${distributor.address}",
                           decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Colors.grey,
-                                    style: BorderStyle.solid)),
+                            border:AppTheme.myTheme.inputDecorationTheme.border,
                             labelText: 'Email Address',
                           ),
                           validator: FormBuilderValidators.compose([
@@ -167,10 +158,7 @@ class _EditDistributor extends State<EditDistributor> {
                           name: 'telephone',
                           initialValue: "${distributor.telephone}",
                           decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Colors.grey,
-                                    style: BorderStyle.solid)),
+                            border: AppTheme.myTheme.inputDecorationTheme.border,
                             labelText: 'Telephone Number',
                           ),
                           validator: FormBuilderValidators.compose([

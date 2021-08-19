@@ -140,10 +140,7 @@ class _FilterCategoryState extends State<FilterCategory> {
                           decoration: InputDecoration(
                               hintText: "Search For",
                               contentPadding: defaultDropDownPadding,
-                              border: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Colors.grey,
-                                      style: BorderStyle.solid))),
+                              border: AppTheme.myTheme.inputDecorationTheme.border),
                         ),
                       ),
                     ),
@@ -184,10 +181,7 @@ class _FilterCategoryState extends State<FilterCategory> {
                                   decoration: InputDecoration(
                                     hintText: "Constraints",
                                     contentPadding: defaultDropDownPadding,
-                                    border: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Colors.grey,
-                                            style: BorderStyle.solid)),
+                                    border: AppTheme.myTheme.inputDecorationTheme.border,
                                   ),
                                 ),
                         )),
@@ -221,10 +215,7 @@ class _FilterCategoryState extends State<FilterCategory> {
                                 name: 'whereArgs',
                                 decoration: InputDecoration(
                                   contentPadding: defaultDropDownPadding,
-                                  border: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Colors.grey,
-                                          style: BorderStyle.solid)),
+                                  border: AppTheme.myTheme.inputDecorationTheme.border,
                                 ),
                                 validator: FormBuilderValidators.compose([
                                   FormBuilderValidators.required(context),

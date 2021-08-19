@@ -181,10 +181,8 @@ class _FilterItem extends State<FilterItem> {
                           decoration: InputDecoration(
                               hintText: "Search For",
                               contentPadding: defaultDropDownPadding,
-                              border: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Colors.grey,
-                                      style: BorderStyle.solid))),
+                              border:
+                                  AppTheme.myTheme.inputDecorationTheme.border),
                         ),
                       ),
                     ),
@@ -220,10 +218,8 @@ class _FilterItem extends State<FilterItem> {
                                       decoration: InputDecoration(
                                         hintText: "Constraints",
                                         contentPadding: defaultDropDownPadding,
-                                        border: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.grey,
-                                                style: BorderStyle.solid)),
+                                        border: AppTheme.myTheme
+                                            .inputDecorationTheme.border,
                                       ),
                                     )
                                   : FormBuilderDropdown(
@@ -245,10 +241,8 @@ class _FilterItem extends State<FilterItem> {
                                       decoration: InputDecoration(
                                         hintText: "Constraints",
                                         contentPadding: defaultDropDownPadding,
-                                        border: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.grey,
-                                                style: BorderStyle.solid)),
+                                        border: AppTheme.myTheme
+                                            .inputDecorationTheme.border,
                                       ),
                                     ),
                         )),
@@ -296,10 +290,8 @@ class _FilterItem extends State<FilterItem> {
                                     name: 'whereArgs',
                                     decoration: InputDecoration(
                                       contentPadding: defaultDropDownPadding,
-                                      border: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.grey,
-                                              style: BorderStyle.solid)),
+                                      border: AppTheme
+                                          .myTheme.inputDecorationTheme.border,
                                     ),
                                     validator: FormBuilderValidators.compose([
                                       FormBuilderValidators.required(context),
@@ -332,7 +324,8 @@ class _FilterItem extends State<FilterItem> {
               width: widget.constraints.maxWidth,
               height: 250,
               child: Container(
-                  color: Color.fromRGBO(45, 45, 45, 1),
+                  color: AppTheme.darken(
+                      AppTheme.myTheme.scaffoldBackgroundColor, 0.2),
                   margin: EdgeInsets.all(12),
                   child: ListView.separated(
                       itemBuilder: (BuildContext context, int index) {

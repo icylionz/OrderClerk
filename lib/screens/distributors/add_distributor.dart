@@ -101,10 +101,7 @@ class _AddDistributor extends State<AddDistributor> {
                           name: 'name',
 
                           decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Colors.grey,
-                                    style: BorderStyle.solid)),
+                            border: AppTheme.myTheme.inputDecorationTheme.border,
                             labelText: 'Distributor Name',
                           ),
 
@@ -123,10 +120,7 @@ class _AddDistributor extends State<AddDistributor> {
                         child: FormBuilderTextField(
                           name: 'address',
                           decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Colors.grey,
-                                    style: BorderStyle.solid)),
+                            border: AppTheme.myTheme.inputDecorationTheme.border,
                             labelText: 'Address',
                           ),
                           validator: FormBuilderValidators.compose([
@@ -142,10 +136,7 @@ class _AddDistributor extends State<AddDistributor> {
                         child: FormBuilderTextField(
                           name: 'email',
                           decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Colors.grey,
-                                    style: BorderStyle.solid)),
+                            border: AppTheme.myTheme.inputDecorationTheme.border,
                             labelText: 'Email Address',
                           ),
                           validator: FormBuilderValidators.compose([
@@ -161,10 +152,7 @@ class _AddDistributor extends State<AddDistributor> {
                         child: FormBuilderTextField(
                           name: 'telephone',
                           decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Colors.grey,
-                                    style: BorderStyle.solid)),
+                            border: AppTheme.myTheme.inputDecorationTheme.border,
                             labelText: 'Telephone Number',
                           ),
                           validator: FormBuilderValidators.compose([

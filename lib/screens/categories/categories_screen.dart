@@ -65,7 +65,7 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                         ),
                         if (viewCategoryDetailsVisible)
                           Container(
-                              color: Colors.grey[850],
+                              color: AppTheme.myTheme.scaffoldBackgroundColor,
                               height: constraints.maxHeight / 1.5,
                               width: constraints.maxWidth / 1.5,
                               child: DetailCategory(
@@ -77,7 +77,7 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                               )),
                         if (filterCategoryOverlayVisible)
                           Container(
-                              color: Colors.grey[850],
+                              color: AppTheme.myTheme.scaffoldBackgroundColor,
                               height: constraints.maxHeight / 1.5,
                               width: constraints.maxWidth / 1.5,
                               child: FilterCategory(
@@ -101,7 +101,7 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                     final snackBar = SnackBar(
                       elevation: 5,
                       behavior: SnackBarBehavior.fixed,
-                      backgroundColor: Colors.grey[850],
+                      backgroundColor: AppTheme.myTheme.scaffoldBackgroundColor,
                       padding: EdgeInsets.all(00),
                       duration: Duration(days: 365),
                       content: AddCategory(
@@ -173,9 +173,9 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                       _submitForm();
                     },
                     decoration: InputDecoration(
-                        focusColor: Color.fromRGBO(0, 234, 255, 1),
+                        focusColor: AppTheme.myTheme.accentColor,
                         suffixIcon: IconButton(
-                            focusColor: Color.fromRGBO(0, 182, 212, 1),
+                            focusColor: AppTheme.myTheme.accentColor,
                             splashRadius: 1,
                             padding: EdgeInsets.zero,
                             onPressed: () {
@@ -187,11 +187,7 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                             )),
                         contentPadding: EdgeInsets.fromLTRB(10, 2, 10, 2),
                         hintText: "Search",
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                width: 5,
-                                style: BorderStyle.solid,
-                                color: Color.fromRGBO(75, 118, 125, 1.0)))),
+                        border: AppTheme.myTheme.inputDecorationTheme.border),
                     keyboardType: categorySearchDropDownValue == "name"
                         ? TextInputType.text
                         : TextInputType.number,
@@ -218,11 +214,7 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                       decoration: InputDecoration(
                           contentPadding: EdgeInsets.fromLTRB(10, 2, 10, 2),
                           hintText: "Search By:",
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 5,
-                                  style: BorderStyle.solid,
-                                  color: Color.fromRGBO(75, 118, 125, 1.0)))),
+                          border: AppTheme.myTheme.inputDecorationTheme.border),
                       initialValue: "name",
                       onChanged: (String? newValue) {
                         setState(() {
@@ -290,7 +282,7 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                           style: BorderStyle.solid,
                           color: Colors.white,
                           width: 0.5)),
-                  tileColor: Colors.grey[850],
+                  tileColor: AppTheme.myTheme.scaffoldBackgroundColor,
                   title: Text(
                     state.categories[index]!.name ?? "null",
                     softWrap: true,

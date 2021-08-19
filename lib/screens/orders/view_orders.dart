@@ -1,3 +1,4 @@
+import 'package:OrderClerk/assets/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -64,7 +65,7 @@ class _ViewOrders extends State<ViewOrders> {
                       Container(
                         height: constraints.maxHeight / 1.4,
                         width: constraints.maxWidth / 1.4,
-                        color: Color.fromRGBO(50, 50, 50, 1),
+                        color: AppTheme.myTheme.scaffoldBackgroundColor,
                         child: orderDetailsOverlayVisible
                             ? DetailsOrder(
                                 orderID: viewOrderID,
@@ -177,11 +178,7 @@ class _ViewOrders extends State<ViewOrders> {
                             )),
                         contentPadding: EdgeInsets.fromLTRB(10, 2, 10, 2),
                         hintText: "Search",
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                width: 5,
-                                style: BorderStyle.solid,
-                                color: Color.fromRGBO(75, 118, 125, 1.0)))),
+                        border: AppTheme.myTheme.inputDecorationTheme.border),
                     keyboardType: orderSearchDropDownValue == "name"
                         ? TextInputType.text
                         : TextInputType.number,
@@ -208,11 +205,7 @@ class _ViewOrders extends State<ViewOrders> {
                       decoration: InputDecoration(
                           contentPadding: EdgeInsets.fromLTRB(10, 2, 10, 2),
                           hintText: "Search By:",
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 5,
-                                  style: BorderStyle.solid,
-                                  color: Color.fromRGBO(75, 118, 125, 1.0)))),
+                          border: AppTheme.myTheme.inputDecorationTheme.border),
                       initialValue: "id",
                       onChanged: (String? newValue) {
                         setState(() {
@@ -272,14 +265,18 @@ class _ViewOrders extends State<ViewOrders> {
             itemBuilder: (BuildContext context, int index) {
               return ExpansionTile(
                 title: RichText(
-                    text: TextSpan(children: [
-                  TextSpan(text: "Order ${state.orders[index]!.id}   "),
-                  TextSpan(
-                      text:
-                          "${state.orders[index]!.orders.first.item!.distributor!.name}",
-                      style:
-                          TextStyle(color: Color.fromRGBO(255, 255, 255, .5))),
-                ])),
+                    text: TextSpan(
+                        style: TextStyle(
+                            color:
+                                Theme.of(context).textTheme.bodyText1!.color),
+                        children: [
+                      TextSpan(text: "Order ${state.orders[index]!.id}   "),
+                      TextSpan(
+                          text:
+                              "${state.orders[index]!.orders.first.item!.distributor!.name}",
+                          style: TextStyle(
+                              color: Color.fromRGBO(255, 255, 255, .5))),
+                    ])),
                 trailing: IconButton(
                   icon: Icon(Icons.visibility),
                   onPressed: () {
@@ -305,28 +302,34 @@ class _ViewOrders extends State<ViewOrders> {
                                 crossAxisAlignment: WrapCrossAlignment.center,
                                 children: [
                                   RichText(
-                                      text: TextSpan(children: [
-                                    TextSpan(
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                      ),
-                                      children: [
+                                      text: TextSpan(
+                                          style: TextStyle(
+                                              color: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyText1!
+                                                  .color),
+                                          children: [
                                         TextSpan(
                                           style: TextStyle(
-                                            fontSize: 11,
+                                            fontSize: 15,
                                           ),
-                                          text: "QTY\n",
+                                          children: [
+                                            TextSpan(
+                                              style: TextStyle(
+                                                fontSize: 11,
+                                              ),
+                                              text: "QTY\n",
+                                            ),
+                                            TextSpan(
+                                              style: TextStyle(
+                                                fontSize: 30,
+                                              ),
+                                              text:
+                                                  "${state.orders[index]!.orders[itemIndex].quantity} ",
+                                            ),
+                                          ],
                                         ),
-                                        TextSpan(
-                                          style: TextStyle(
-                                            fontSize: 30,
-                                          ),
-                                          text:
-                                              "${state.orders[index]!.orders[itemIndex].quantity} ",
-                                        ),
-                                      ],
-                                    ),
-                                  ])),
+                                      ])),
 
                                   //Item details
                                   Padding(
@@ -335,16 +338,18 @@ class _ViewOrders extends State<ViewOrders> {
                                         overflow: TextOverflow.visible,
                                         text: TextSpan(
                                             style: TextStyle(
-                                                color: Color.fromRGBO(
-                                                    90, 90, 90, 1),
+                                                color: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyText1!
+                                                    .color,
                                                 fontWeight: FontWeight.w600),
                                             children: [
                                               TextSpan(
                                                 text:
                                                     "${state.orders[index]!.orders[itemIndex].item!.name}\n",
                                                 style: TextStyle(
-                                                    fontSize: 30,
-                                                    color: Colors.white),
+                                                  fontSize: 30,
+                                                ),
                                               ),
                                               TextSpan(
                                                   text:

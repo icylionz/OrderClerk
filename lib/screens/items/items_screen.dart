@@ -1,3 +1,4 @@
+import 'package:OrderClerk/assets/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
@@ -98,7 +99,7 @@ class _ItemsScreen extends State<ItemsScreen>
                       height: constraints.maxHeight / 1.5,
                       width: constraints.maxWidth / 1.5,
                       child: Container(
-                        color: Colors.grey[850],
+                        color: AppTheme.myTheme.scaffoldBackgroundColor,
                         child: addItemOverlayVisible
                             ? AddItem(
                                 closeCallBack: _resetOverlays,

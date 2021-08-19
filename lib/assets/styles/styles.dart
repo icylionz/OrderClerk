@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 class AppTheme {
   static final myTheme = ThemeData(
     // Define the default brightness and colors.
-    scaffoldBackgroundColor: Color.fromRGBO(50, 50, 50, 0.5),
-    brightness: Brightness.dark,
-    primaryColor: Color.fromRGBO(40, 40, 40, 1),
+    brightness: Brightness.light,
     accentColor: Colors.cyan[600],
 
+    inputDecorationTheme: InputDecorationTheme(
+        border: OutlineInputBorder(
+            borderSide: BorderSide(
+                width: 5, style: BorderStyle.solid, color: Colors.white))),
     // Define the default font family.
     fontFamily: 'Ubuntu',
 

@@ -1,3 +1,4 @@
+import 'package:OrderClerk/assets/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:getwidget/getwidget.dart';
@@ -90,7 +91,8 @@ class _DetailDistributorState extends State<DetailDistributor> {
                   confirmDeleteVisible
                       ? Center(
                           child: Container(
-                            color: Color.fromRGBO(50, 50, 50, 1.0),
+                            color: AppTheme.darken(
+                                AppTheme.myTheme.scaffoldBackgroundColor),
                             width: constraints.maxWidth - 200,
                             height: constraints.maxHeight - 200,
                             child: Column(
@@ -146,7 +148,8 @@ class _DetailDistributorState extends State<DetailDistributor> {
                               child: Container(
                                   width: constraints.maxWidth - 200,
                                   height: constraints.maxHeight - 200,
-                                  color: Color.fromRGBO(50, 50, 50, 1.0),
+                                  color: AppTheme.darken(
+                                      AppTheme.myTheme.scaffoldBackgroundColor),
                                   child: EditDistributor(
                                     distributor: distributor,
                                     callback: resetOverlay,
@@ -158,7 +161,7 @@ class _DetailDistributorState extends State<DetailDistributor> {
             : Container(),
         body: Container(
           padding: EdgeInsets.fromLTRB(5, 2, 5, 5),
-          color: Color.fromRGBO(50, 50, 50, 1),
+          color: AppTheme.myTheme.scaffoldBackgroundColor,
           width: constraints.maxWidth,
           height: constraints.maxHeight,
           child: SingleChildScrollView(
@@ -178,9 +181,9 @@ class _DetailDistributorState extends State<DetailDistributor> {
                         tooltip: "Close",
                         onPressed: callback,
                         icon: Icon(Icons.close)),
-                    Text("Distributor Details",
-                        style: TextStyle(
-                            color: Color.fromRGBO(110, 110, 110, 1.0))),
+                    Text(
+                      "Distributor Details",
+                    ),
                     //delete Distributor
                     Row(
                       mainAxisSize: MainAxisSize.min,
@@ -222,7 +225,10 @@ class _DetailDistributorState extends State<DetailDistributor> {
                   child: RichText(
                     text: TextSpan(
                         style: TextStyle(
-                            fontWeight: FontWeight.normal, fontSize: 18),
+                            fontWeight: FontWeight.normal,
+                            fontSize: 18,
+                            color:
+                                Theme.of(context).textTheme.bodyText1!.color),
                         children: [
                           TextSpan(
                             text: "Distributor ID: ",
@@ -240,7 +246,10 @@ class _DetailDistributorState extends State<DetailDistributor> {
                     child: RichText(
                       text: TextSpan(
                           style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 18),
+                              fontWeight: FontWeight.normal,
+                              fontSize: 18,
+                              color:
+                                  Theme.of(context).textTheme.bodyText1!.color),
                           children: [
                             TextSpan(
                               text: "Distributor Name: ",
@@ -257,7 +266,10 @@ class _DetailDistributorState extends State<DetailDistributor> {
                     child: RichText(
                       text: TextSpan(
                           style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 18),
+                              fontWeight: FontWeight.normal,
+                              fontSize: 18,
+                              color:
+                                  Theme.of(context).textTheme.bodyText1!.color),
                           children: [
                             TextSpan(
                               text: "Address: ",
@@ -274,7 +286,10 @@ class _DetailDistributorState extends State<DetailDistributor> {
                     child: RichText(
                       text: TextSpan(
                           style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 18),
+                              fontWeight: FontWeight.normal,
+                              fontSize: 18,
+                              color:
+                                  Theme.of(context).textTheme.bodyText1!.color),
                           children: [
                             TextSpan(
                               text: "Email Address: ",
@@ -291,7 +306,10 @@ class _DetailDistributorState extends State<DetailDistributor> {
                     child: RichText(
                       text: TextSpan(
                           style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 18),
+                              fontWeight: FontWeight.normal,
+                              fontSize: 18,
+                              color:
+                                  Theme.of(context).textTheme.bodyText1!.color),
                           children: [
                             TextSpan(
                               text: "Telephone Number: ",
@@ -311,11 +329,14 @@ class _DetailDistributorState extends State<DetailDistributor> {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     "Items carried by ${distributor.name} : ",
-                    style: TextStyle(fontWeight: FontWeight.w600),
+                    style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: Theme.of(context).textTheme.bodyText1!.color),
                   ),
                 ),
                 Container(
-                  color: Color.fromRGBO(30, 30, 30, 1),
+                  color: AppTheme.darken(
+                      AppTheme.myTheme.scaffoldBackgroundColor, 0.2),
                   width: constraints.maxWidth - (_itemDetailPadding.left * 2),
                   height: 600,
                   child: ListView.separated(
@@ -327,13 +348,15 @@ class _DetailDistributorState extends State<DetailDistributor> {
                             trailing: RichText(
                               text: TextSpan(
                                   style: TextStyle(
-                                      color: Color.fromRGBO(100, 100, 100, 1),
-                                      fontWeight: FontWeight.normal),
+                                      fontWeight: FontWeight.normal,
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .bodyText1!
+                                          .color),
                                   text: "Pkg Size:  ",
                                   children: [
                                     TextSpan(
                                       style: TextStyle(
-                                          color: Colors.white,
                                           fontWeight: FontWeight.bold),
                                       text:
                                           "${distributor.items[index]!.packageSize}",

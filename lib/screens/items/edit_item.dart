@@ -109,10 +109,7 @@ class _EditItem extends State<EditItem> {
                         name: 'name',
                         initialValue: item.name,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Colors.grey,
-                                  style: BorderStyle.solid)),
+                          border: AppTheme.myTheme.inputDecorationTheme.border,
                           labelText: 'Item Name',
                         ),
                         // valueTransformer: (text) => num.tryParse(text),
@@ -132,10 +129,7 @@ class _EditItem extends State<EditItem> {
                       child: FormBuilderTextField(
                         name: 'costPrice',
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Colors.grey,
-                                  style: BorderStyle.solid)),
+                          border: AppTheme.myTheme.inputDecorationTheme.border,
                           labelText: 'Cost Price',
                         ),
                         initialValue: item.costPrice!.toStringAsFixed(2),
@@ -159,10 +153,7 @@ class _EditItem extends State<EditItem> {
                         name: 'sellingPrice',
                         initialValue: item.sellingPrice!.toStringAsFixed(2),
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Colors.grey,
-                                  style: BorderStyle.solid)),
+                          border: AppTheme.myTheme.inputDecorationTheme.border,
                           labelText: 'Selling Price',
                         ),
                         valueTransformer: (String? text) =>
@@ -184,10 +175,7 @@ class _EditItem extends State<EditItem> {
                         name: 'distributorID',
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(5),
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Colors.grey,
-                                  style: BorderStyle.solid)),
+                          border: AppTheme.myTheme.inputDecorationTheme.border,
                           labelText: 'Distributor',
                         ),
                         initialValue: item.distributorID,
@@ -212,10 +200,7 @@ class _EditItem extends State<EditItem> {
                         name: 'packageSize',
                         initialValue: item.packageSize,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Colors.grey,
-                                  style: BorderStyle.solid)),
+                          border: AppTheme.myTheme.inputDecorationTheme.border,
                           labelText: 'Package Size',
                         ),
                         validator: FormBuilderValidators.compose([
@@ -235,10 +220,7 @@ class _EditItem extends State<EditItem> {
                         initialValue: item.category,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(5),
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Colors.grey,
-                                  style: BorderStyle.solid)),
+                          border: AppTheme.myTheme.inputDecorationTheme.border,
                           labelText: 'Category',
                         ),
                         // initialValue: 'Male',
@@ -263,10 +245,7 @@ class _EditItem extends State<EditItem> {
                         initialValue: item.formula,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(5),
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Colors.grey,
-                                  style: BorderStyle.solid)),
+                          border: AppTheme.myTheme.inputDecorationTheme.border,
                           labelText: 'Formula',
                         ),
                         // initialValue: 'Male',

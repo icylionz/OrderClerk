@@ -68,7 +68,7 @@ class _DistributorsScreen extends State<DistributorsScreen> {
                       ),
                       if (addDistributorOverlayVisible)
                         Container(
-                            color: Colors.grey[850],
+                            color: AppTheme.myTheme.scaffoldBackgroundColor,
                             height: constraints.maxHeight / 1.5,
                             width: constraints.maxWidth / 1.5,
                             child: AddDistributor(
@@ -76,7 +76,7 @@ class _DistributorsScreen extends State<DistributorsScreen> {
                             )),
                       if (viewDistributorDetailsVisible)
                         Container(
-                            color: Colors.grey[850],
+                            color: AppTheme.myTheme.scaffoldBackgroundColor,
                             height: constraints.maxHeight / 1.5,
                             width: constraints.maxWidth / 1.5,
                             child: DetailDistributor(
@@ -87,7 +87,7 @@ class _DistributorsScreen extends State<DistributorsScreen> {
                             )),
                       if (filterDistributorOverlayVisible)
                         Container(
-                            color: Colors.grey[850],
+                            color: AppTheme.myTheme.scaffoldBackgroundColor,
                             height: constraints.maxHeight / 1.5,
                             width: constraints.maxWidth / 1.5,
                             child: FilterDistributor(
@@ -181,11 +181,7 @@ class _DistributorsScreen extends State<DistributorsScreen> {
                             )),
                         contentPadding: EdgeInsets.fromLTRB(10, 2, 10, 2),
                         hintText: "Search",
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                width: 5,
-                                style: BorderStyle.solid,
-                                color: Color.fromRGBO(75, 118, 125, 1.0)))),
+                        border: AppTheme.myTheme.inputDecorationTheme.border),
                     keyboardType: distributorSearchDropDownValue == "name"
                         ? TextInputType.text
                         : TextInputType.number,
@@ -212,11 +208,7 @@ class _DistributorsScreen extends State<DistributorsScreen> {
                       decoration: InputDecoration(
                           contentPadding: EdgeInsets.fromLTRB(10, 2, 10, 2),
                           hintText: "Search By:",
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 5,
-                                  style: BorderStyle.solid,
-                                  color: Color.fromRGBO(75, 118, 125, 1.0)))),
+                          border: AppTheme.myTheme.inputDecorationTheme.border),
                       initialValue: "name",
                       onChanged: (String? newValue) {
                         setState(() {
@@ -282,8 +274,10 @@ class _DistributorsScreen extends State<DistributorsScreen> {
                 child: ExpansionTile(
                   tilePadding: const EdgeInsets.all(8),
                   childrenPadding: const EdgeInsets.all(12),
-                  backgroundColor: AppTheme.myTheme.primaryColor,
-                  collapsedBackgroundColor: AppTheme.myTheme.primaryColor,
+                  backgroundColor: AppTheme.darken(
+                      AppTheme.myTheme.scaffoldBackgroundColor, 0.1),
+                  collapsedBackgroundColor: AppTheme.darken(
+                      AppTheme.myTheme.scaffoldBackgroundColor, 0.1),
                   expandedCrossAxisAlignment: CrossAxisAlignment.start,
                   expandedAlignment: Alignment.centerLeft,
                   title: Text(state.distributors[index]!.name ?? "null"),

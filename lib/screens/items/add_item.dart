@@ -103,10 +103,7 @@ class _AddItem extends State<AddItem> {
                       child: FormBuilderTextField(
                         name: 'name',
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Colors.grey,
-                                  style: BorderStyle.solid)),
+                          border: AppTheme.myTheme.inputDecorationTheme.border,
                           labelText: 'Item Name',
                         ),
                         // valueTransformer: (text) => num.tryParse(text),
@@ -126,10 +123,7 @@ class _AddItem extends State<AddItem> {
                       child: FormBuilderTextField(
                         name: 'costPrice',
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Colors.grey,
-                                  style: BorderStyle.solid)),
+                          border: AppTheme.myTheme.inputDecorationTheme.border,
                           labelText: 'Cost Price',
                         ),
                         initialValue: "0.00",
@@ -152,10 +146,7 @@ class _AddItem extends State<AddItem> {
                       child: FormBuilderTextField(
                         name: 'sellingPrice',
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Colors.grey,
-                                  style: BorderStyle.solid)),
+                          border:AppTheme.myTheme.inputDecorationTheme.border,
                           labelText: 'Selling Price',
                         ),
                         valueTransformer: (String? text) =>
@@ -177,10 +168,7 @@ class _AddItem extends State<AddItem> {
                         name: 'distributorID',
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(5),
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Colors.grey,
-                                  style: BorderStyle.solid)),
+                          border: AppTheme.myTheme.inputDecorationTheme.border,
                           labelText: 'Distributor',
                         ),
                         // initialValue: 'Male',
@@ -205,10 +193,7 @@ class _AddItem extends State<AddItem> {
                       child: FormBuilderTextField(
                         name: 'packageSize',
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Colors.grey,
-                                  style: BorderStyle.solid)),
+                          border: AppTheme.myTheme.inputDecorationTheme.border,
                           labelText: 'Package Size',
                         ),
                         // valueTransformer: (text) => num.tryParse(text),
@@ -228,10 +213,7 @@ class _AddItem extends State<AddItem> {
                         name: 'categoryID',
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(5),
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Colors.grey,
-                                  style: BorderStyle.solid)),
+                          border: AppTheme.myTheme.inputDecorationTheme.border,
                           labelText: 'Category',
                         ),
                         // initialValue: 'Male',
@@ -255,10 +237,7 @@ class _AddItem extends State<AddItem> {
                         name: 'formulaID',
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(5),
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Colors.grey,
-                                  style: BorderStyle.solid)),
+                          border: AppTheme.myTheme.inputDecorationTheme.border,
                           labelText: 'Formula',
                         ),
                         // initialValue: 'Male',

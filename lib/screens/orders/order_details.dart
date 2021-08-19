@@ -188,12 +188,10 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                                               20,
                                                       child: FormBuilderDateTimePicker(
                                                           decoration: InputDecoration(
-                                                              border: OutlineInputBorder(
-                                                                  borderSide: BorderSide(
-                                                                      color: Colors
-                                                                          .grey,
-                                                                      style: BorderStyle
-                                                                          .solid)),
+                                                              border: AppTheme
+                                                                  .myTheme
+                                                                  .inputDecorationTheme
+                                                                  .border,
                                                               labelText:
                                                                   "Expires On",
                                                               labelStyle:
@@ -223,12 +221,10 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                                           FormBuilderTextField(
                                                         decoration:
                                                             InputDecoration(
-                                                          border: OutlineInputBorder(
-                                                              borderSide: BorderSide(
-                                                                  color: Colors
-                                                                      .grey,
-                                                                  style: BorderStyle
-                                                                      .solid)),
+                                                          border: AppTheme
+                                                              .myTheme
+                                                              .inputDecorationTheme
+                                                              .border,
                                                           labelText: 'Batch #',
                                                           labelStyle: TextStyle(
                                                               fontSize: 15),
@@ -251,12 +247,10 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                                           FormBuilderTextField(
                                                         decoration:
                                                             InputDecoration(
-                                                          border: OutlineInputBorder(
-                                                              borderSide: BorderSide(
-                                                                  color: Colors
-                                                                      .grey,
-                                                                  style: BorderStyle
-                                                                      .solid)),
+                                                          border: AppTheme
+                                                              .myTheme
+                                                              .inputDecorationTheme
+                                                              .border,
                                                           labelText: 'Notes',
                                                           labelStyle: TextStyle(
                                                               fontSize: 15),
@@ -469,97 +463,120 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                   children: [
                                     //Quantity
                                     RichText(
-                                        text: TextSpan(children: [
-                                      TextSpan(
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                        ),
-                                        children: [
+                                        text: TextSpan(
+                                            style: TextStyle(
+                                                color: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyText1!
+                                                    .color),
+                                            children: [
                                           TextSpan(
                                             style: TextStyle(
-                                              fontSize: 12,
+                                              fontSize: 15,
                                             ),
-                                            text: "QTY\n",
+                                            children: [
+                                              TextSpan(
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                ),
+                                                text: "QTY\n",
+                                              ),
+                                              TextSpan(
+                                                style: TextStyle(
+                                                  fontSize: 30,
+                                                ),
+                                                text:
+                                                    "${orderCluster!.orders[index].quantity} ",
+                                              ),
+                                            ],
                                           ),
-                                          TextSpan(
-                                            style: TextStyle(
-                                              fontSize: 30,
-                                            ),
-                                            text:
-                                                "${orderCluster!.orders[index].quantity} ",
-                                          ),
-                                        ],
-                                      ),
-                                    ])),
+                                        ])),
                                     //Item Name
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: RichText(
                                           text: TextSpan(
                                               style: TextStyle(
-                                                fontSize: 30,
-                                              ),
+                                                  fontSize: 30,
+                                                  color: Theme.of(context)
+                                                      .textTheme
+                                                      .bodyText1!
+                                                      .color),
                                               text:
                                                   "${orderCluster!.orders[index].item!.name}")),
                                     ),
                                     //Order Details
                                     RichText(
-                                      text: TextSpan(children: [
-                                        TextSpan(text: "Item   #"),
-                                        TextSpan(
-                                            text:
-                                                "${orderCluster!.orders[index].item?.id}\n",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w600)),
-                                        if (orderCluster!
-                                                .orders[index].isReceived ==
-                                            true)
-                                          TextSpan(text: "Date Received:   "),
-                                        if (orderCluster!
-                                                .orders[index].isReceived ==
-                                            true)
-                                          TextSpan(
-                                              text:
-                                                  "${DateFormat('yyyy-MM-dd hh:mm:ss').format(orderCluster!.orders[index].dateReceived!)}\n",
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w600)),
-                                        if (orderCluster!
-                                                .orders[index].isCancelled ==
-                                            true)
-                                          TextSpan(text: "Date Cancelled:   "),
-                                        if (orderCluster!
-                                                .orders[index].isCancelled ==
-                                            true)
-                                          TextSpan(
-                                              text:
-                                                  "${DateFormat('yyyy-MM-dd hh:mm:ss').format(orderCluster!.orders[index].dateCancelled!)}\n",
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w600)),
-                                        if (orderCluster!
-                                                .orders[index].dateExpired !=
-                                            null)
-                                          TextSpan(text: "Expiration date:   "),
-                                        if (orderCluster!
-                                                .orders[index].dateExpired !=
-                                            null)
-                                          TextSpan(
-                                              text:
-                                                  "${DateFormat('yyyy-MM-dd hh:mm:ss').format(orderCluster!.orders[index].dateExpired!)}\n",
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w600)),
-                                        if (orderCluster!
-                                                .orders[index].batchNumber !=
-                                            null)
-                                          TextSpan(text: "Batch #: "),
-                                        if (orderCluster!
-                                                .orders[index].batchNumber !=
-                                            null)
-                                          TextSpan(
-                                              text:
-                                                  "${orderCluster!.orders[index].batchNumber}\n",
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w600)),
-                                      ]),
+                                      text: TextSpan(
+                                          style: TextStyle(
+                                              color: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyText1!
+                                                  .color),
+                                          children: [
+                                            TextSpan(text: "Item   #"),
+                                            TextSpan(
+                                                text:
+                                                    "${orderCluster!.orders[index].item?.id}\n",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.w600)),
+                                            if (orderCluster!
+                                                    .orders[index].isReceived ==
+                                                true)
+                                              TextSpan(
+                                                  text: "Date Received:   "),
+                                            if (orderCluster!
+                                                    .orders[index].isReceived ==
+                                                true)
+                                              TextSpan(
+                                                  text:
+                                                      "${DateFormat('yyyy-MM-dd hh:mm:ss').format(orderCluster!.orders[index].dateReceived!)}\n",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w600)),
+                                            if (orderCluster!.orders[index]
+                                                    .isCancelled ==
+                                                true)
+                                              TextSpan(
+                                                  text: "Date Cancelled:   "),
+                                            if (orderCluster!.orders[index]
+                                                    .isCancelled ==
+                                                true)
+                                              TextSpan(
+                                                  text:
+                                                      "${DateFormat('yyyy-MM-dd hh:mm:ss').format(orderCluster!.orders[index].dateCancelled!)}\n",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w600)),
+                                            if (orderCluster!.orders[index]
+                                                    .dateExpired !=
+                                                null)
+                                              TextSpan(
+                                                  text: "Expiration date:   "),
+                                            if (orderCluster!.orders[index]
+                                                    .dateExpired !=
+                                                null)
+                                              TextSpan(
+                                                  text:
+                                                      "${DateFormat('yyyy-MM-dd hh:mm:ss').format(orderCluster!.orders[index].dateExpired!)}\n",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w600)),
+                                            if (orderCluster!.orders[index]
+                                                    .batchNumber !=
+                                                null)
+                                              TextSpan(text: "Batch #: "),
+                                            if (orderCluster!.orders[index]
+                                                    .batchNumber !=
+                                                null)
+                                              TextSpan(
+                                                  text:
+                                                      "${orderCluster!.orders[index].batchNumber}\n",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w600)),
+                                          ]),
                                     ),
                                     //buttons for order reception and cancellation and notes field
                                     ConstrainedBox(
@@ -927,8 +944,11 @@ class _EditOrderNotesState extends State<EditOrderNotes> {
             flex: 7,
             child: Container(
               decoration: BoxDecoration(
-                  border:
-                      Border.all(color: Colors.grey, style: BorderStyle.solid)),
+                  border: Border.all(
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? Colors.white
+                    : Colors.black,
+              )),
               margin: EdgeInsets.all(10),
               padding: EdgeInsets.all(5),
               child: SingleChildScrollView(
@@ -955,6 +975,7 @@ class _EditOrderNotesState extends State<EditOrderNotes> {
               child: ButtonBar(
                 children: [
                   GFButton(
+                    color: AppTheme.myTheme.accentColor,
                     child: Text("Save"),
                     onPressed: () {
                       DatabaseHelper.instance.update(
@@ -967,6 +988,7 @@ class _EditOrderNotesState extends State<EditOrderNotes> {
                     },
                   ),
                   GFButton(
+                    color: AppTheme.myTheme.accentColor,
                       child: Text("Undo"),
                       onPressed: () {
                         notesTextFieldController.text =

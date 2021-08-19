@@ -103,10 +103,7 @@ class _EditCategory extends State<EditCategory> {
                           name: 'name',
                           initialValue: "${widget.category.name}",
                           decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Colors.grey,
-                                    style: BorderStyle.solid)),
+                            border: AppTheme.myTheme.inputDecorationTheme.border,
                             labelText: 'Category Name',
                           ),
 

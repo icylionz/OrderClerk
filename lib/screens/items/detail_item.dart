@@ -1,3 +1,4 @@
+import 'package:OrderClerk/assets/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -89,7 +90,8 @@ class _DetailItemState extends State<DetailItem> {
                   confirmDeleteVisible
                       ? Center(
                           child: Container(
-                            color: Color.fromRGBO(50, 50, 50, 1.0),
+                            color: AppTheme.darken(
+                                AppTheme.myTheme.scaffoldBackgroundColor),
                             width: constraints.maxWidth - 200,
                             height: constraints.maxHeight - 200,
                             child: Column(
@@ -144,7 +146,8 @@ class _DetailItemState extends State<DetailItem> {
                               height: constraints.maxHeight - 200,
                               width: constraints.maxWidth - 200,
                               child: Container(
-                                  color: Color.fromRGBO(50, 50, 50, 1.0),
+                                  color: AppTheme.darken(
+                                      AppTheme.myTheme.scaffoldBackgroundColor),
                                   child: Center(
                                     child: EditItem(
                                         item: item,
@@ -157,7 +160,7 @@ class _DetailItemState extends State<DetailItem> {
             : Container(),
         body: Container(
           padding: EdgeInsets.fromLTRB(5, 2, 5, 5),
-          color: Color.fromRGBO(50, 50, 50, 1),
+          color: AppTheme.myTheme.scaffoldBackgroundColor,
           width: constraints.maxWidth,
           height: constraints.maxHeight,
           child: SingleChildScrollView(
@@ -177,9 +180,9 @@ class _DetailItemState extends State<DetailItem> {
                         tooltip: "Close",
                         onPressed: callback,
                         icon: Icon(Icons.close)),
-                    Text("Item Details",
-                        style: TextStyle(
-                            color: Color.fromRGBO(110, 110, 110, 1.0))),
+                    Text(
+                      "Item Details",
+                    ),
                     //delete Item
                     Row(
                       mainAxisSize: MainAxisSize.min,
@@ -251,7 +254,8 @@ class _DetailItemState extends State<DetailItem> {
                   child: RichText(
                     text: TextSpan(
                         style: TextStyle(
-                            fontWeight: FontWeight.normal, fontSize: 18),
+                            fontWeight: FontWeight.normal, fontSize: 18,color:
+                                  Theme.of(context).textTheme.bodyText1!.color),
                         children: [
                           TextSpan(
                             text: "Item ID: ",
@@ -269,7 +273,8 @@ class _DetailItemState extends State<DetailItem> {
                     child: RichText(
                       text: TextSpan(
                           style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 18),
+                              fontWeight: FontWeight.normal, fontSize: 18,color:
+                                  Theme.of(context).textTheme.bodyText1!.color),
                           children: [
                             TextSpan(
                               text: "Item Name: ",
@@ -286,7 +291,8 @@ class _DetailItemState extends State<DetailItem> {
                     child: RichText(
                       text: TextSpan(
                           style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 18),
+                              fontWeight: FontWeight.normal, fontSize: 18,color:
+                                  Theme.of(context).textTheme.bodyText1!.color),
                           children: [
                             TextSpan(
                               text: "Distributor: ",
@@ -303,7 +309,8 @@ class _DetailItemState extends State<DetailItem> {
                     child: RichText(
                       text: TextSpan(
                           style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 18),
+                              fontWeight: FontWeight.normal, fontSize: 18,color:
+                                  Theme.of(context).textTheme.bodyText1!.color),
                           children: [
                             TextSpan(
                               text: "Category: ",
@@ -320,7 +327,8 @@ class _DetailItemState extends State<DetailItem> {
                     child: RichText(
                       text: TextSpan(
                           style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 18),
+                              fontWeight: FontWeight.normal, fontSize: 18,color:
+                                  Theme.of(context).textTheme.bodyText1!.color),
                           children: [
                             TextSpan(
                               text: "Package Size: ",
@@ -337,7 +345,8 @@ class _DetailItemState extends State<DetailItem> {
                     child: RichText(
                       text: TextSpan(
                           style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 18),
+                              fontWeight: FontWeight.normal, fontSize: 18,color:
+                                  Theme.of(context).textTheme.bodyText1!.color),
                           children: [
                             TextSpan(
                               text: "Cost Price: ",
@@ -354,7 +363,8 @@ class _DetailItemState extends State<DetailItem> {
                     child: RichText(
                       text: TextSpan(
                           style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 18),
+                              fontWeight: FontWeight.normal, fontSize: 18,color:
+                                  Theme.of(context).textTheme.bodyText1!.color),
                           children: [
                             TextSpan(
                               text: "Selling Price: ",
@@ -372,7 +382,8 @@ class _DetailItemState extends State<DetailItem> {
                     child: RichText(
                       text: TextSpan(
                           style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 18),
+                              fontWeight: FontWeight.normal, fontSize: 18,color:
+                                  Theme.of(context).textTheme.bodyText1!.color),
                           children: [
                             TextSpan(
                               text: "Last Order Made Date: ",
@@ -391,7 +402,8 @@ class _DetailItemState extends State<DetailItem> {
                     child: RichText(
                       text: TextSpan(
                           style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 18),
+                              fontWeight: FontWeight.normal, fontSize: 18,color:
+                                  Theme.of(context).textTheme.bodyText1!.color),
                           children: [
                             TextSpan(
                               text: "Last Order Received Date: ",
@@ -410,7 +422,8 @@ class _DetailItemState extends State<DetailItem> {
                     child: RichText(
                       text: TextSpan(
                           style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 18),
+                              fontWeight: FontWeight.normal, fontSize: 18,color:
+                                  Theme.of(context).textTheme.bodyText1!.color),
                           children: [
                             TextSpan(
                               text: "Expiration Date On Last Order Received: ",
@@ -429,7 +442,8 @@ class _DetailItemState extends State<DetailItem> {
                     child: RichText(
                       text: TextSpan(
                           style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 18),
+                              fontWeight: FontWeight.normal, fontSize: 18,color:
+                                  Theme.of(context).textTheme.bodyText1!.color),
                           children: [
                             TextSpan(
                               text: "Formula For Selling Price: ",

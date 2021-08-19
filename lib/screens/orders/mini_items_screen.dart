@@ -1,3 +1,4 @@
+import 'package:OrderClerk/assets/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
@@ -106,7 +107,7 @@ class _MiniItemsScreen extends State<MiniItemsScreen>
                       height: constraints.maxHeight / 1.5,
                       width: constraints.maxWidth / 1.5,
                       child: Container(
-                        color: Colors.grey[850],
+                        color: AppTheme.myTheme.scaffoldBackgroundColor,
                         child: addItemOverlayVisible
                             ? AddItem(
                                 closeCallBack: _resetOverlays,
@@ -231,11 +232,7 @@ class _MiniItemsScreen extends State<MiniItemsScreen>
                             )),
                         contentPadding: EdgeInsets.fromLTRB(10, 2, 10, 2),
                         hintText: "Search",
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                width: 5,
-                                style: BorderStyle.solid,
-                                color: Color.fromRGBO(75, 118, 125, 1.0)))),
+                        border: AppTheme.myTheme.inputDecorationTheme.border),
                     keyboardType: itemSearchDropDownValue == "i.name"
                         ? TextInputType.text
                         : TextInputType.number,
@@ -262,11 +259,7 @@ class _MiniItemsScreen extends State<MiniItemsScreen>
                       decoration: InputDecoration(
                           contentPadding: EdgeInsets.fromLTRB(10, 2, 10, 2),
                           hintText: "Search By:",
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 5,
-                                  style: BorderStyle.solid,
-                                  color: Color.fromRGBO(75, 118, 125, 1.0)))),
+                          border: AppTheme.myTheme.inputDecorationTheme.border),
                       initialValue: "i.name",
                       onChanged: (String? newValue) {
                         setState(() {

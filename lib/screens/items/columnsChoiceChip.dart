@@ -25,7 +25,9 @@ class _ColumnsChoiceChipState extends State<ColumnsChoiceChip> {
       text: widget.display,
       color: ItemFilter.columns.first[widget.name]
           ? AppTheme.myTheme.accentColor
-          : AppTheme.myTheme.primaryColor,
+          : Theme.of(context).brightness == Brightness.dark
+              ? AppTheme.lighten(AppTheme.myTheme.scaffoldBackgroundColor, 0.3)
+              : AppTheme.darken(AppTheme.myTheme.scaffoldBackgroundColor, 0.5),
       onPressed: () {
         setState(() {
           ItemFilter.columns.first[widget.name] =

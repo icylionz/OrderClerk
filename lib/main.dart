@@ -15,6 +15,10 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:sqflite/sqflite.dart';
 import 'bloc/order_table_bloc/make_orders_bloc.dart';
 import 'package:desktop_window/desktop_window.dart';
+import 'dart:ffi';
+
+import 'package:ffi/ffi.dart';
+import 'package:win32/win32.dart';
 
 Future main() async {
   Mappable.factories = {

@@ -166,10 +166,7 @@ class _FilterOrderState extends State<FilterOrder> {
                           decoration: InputDecoration(
                               hintText: "Search For",
                               contentPadding: defaultDropDownPadding,
-                              border: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Colors.grey,
-                                      style: BorderStyle.solid))),
+                              border: AppTheme.myTheme.inputDecorationTheme.border),
                         ),
                       ),
                     ),
@@ -205,10 +202,7 @@ class _FilterOrderState extends State<FilterOrder> {
                                       decoration: InputDecoration(
                                         hintText: "Constraints",
                                         contentPadding: defaultDropDownPadding,
-                                        border: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.grey,
-                                                style: BorderStyle.solid)),
+                                        border: AppTheme.myTheme.inputDecorationTheme.border,
                                       ),
                                     )
                                   : FormBuilderDropdown(
@@ -230,10 +224,7 @@ class _FilterOrderState extends State<FilterOrder> {
                                       decoration: InputDecoration(
                                         hintText: "Constraints",
                                         contentPadding: defaultDropDownPadding,
-                                        border: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.grey,
-                                                style: BorderStyle.solid)),
+                                        border: AppTheme.myTheme.inputDecorationTheme.border,
                                       ),
                                     ),
                         )),
@@ -281,10 +272,7 @@ class _FilterOrderState extends State<FilterOrder> {
                                     name: 'whereArgs',
                                     decoration: InputDecoration(
                                       contentPadding: defaultDropDownPadding,
-                                      border: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.grey,
-                                              style: BorderStyle.solid)),
+                                      border: AppTheme.myTheme.inputDecorationTheme.border,
                                     ),
                                     validator: FormBuilderValidators.compose([
                                       FormBuilderValidators.required(context),

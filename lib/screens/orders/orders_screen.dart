@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:OrderClerk/assets/styles/styles.dart';
 import 'package:filepicker_windows/filepicker_windows.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -76,7 +77,7 @@ class _OrdersScreen extends State<OrdersScreen>
                             height: constraints.maxHeight / 1.5,
                             width: constraints.maxWidth / 1.5,
                             child: Container(
-                              color: Colors.grey[850],
+                              color: AppTheme.myTheme.scaffoldBackgroundColor,
                               child: Container(),
                             ),
                           )
@@ -160,7 +161,10 @@ class _OrdersScreen extends State<OrdersScreen>
   Container buildSelectedItemsBottombar(
       BoxConstraints constraints, MakeOrdersState state) {
     return Container(
-      decoration: BoxDecoration(color: Color.fromRGBO(50, 50, 50, 1)),
+      decoration: BoxDecoration(
+          color: Theme.of(context).brightness == Brightness.dark
+              ? AppTheme.lighten(AppTheme.myTheme.scaffoldBackgroundColor, 0.1)
+              : AppTheme.darken(AppTheme.myTheme.scaffoldBackgroundColor, 0.2)),
       width: constraints.maxWidth,
       height: _viewSelectedButtonBarHeight,
       child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
@@ -172,7 +176,7 @@ class _OrdersScreen extends State<OrdersScreen>
             width: 60,
             child: GFButton(
               buttonBoxShadow: false,
-              color: Colors.grey,
+              color: AppTheme.myTheme.accentColor,
               size: 20,
               clipBehavior: Clip.antiAlias,
               text: "Submit Order",
@@ -191,7 +195,7 @@ class _OrdersScreen extends State<OrdersScreen>
             child: GFButton(
               padding: const EdgeInsets.symmetric(horizontal: 5),
               buttonBoxShadow: false,
-              color: Colors.grey,
+              color: AppTheme.myTheme.accentColor,
               size: 25,
               clipBehavior: Clip.antiAlias,
               text: "Save Quantity",
@@ -221,7 +225,12 @@ class _OrdersScreen extends State<OrdersScreen>
               Container(
                 width: _totalCostBoxWidth * 0.5,
                 height: (_viewSelectedButtonBarHeight - 10),
-                decoration: BoxDecoration(color: Color.fromRGBO(40, 40, 40, 1)),
+                decoration: BoxDecoration(
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? AppTheme.lighten(
+                            AppTheme.myTheme.scaffoldBackgroundColor, 0.2)
+                        : AppTheme.darken(
+                            AppTheme.myTheme.scaffoldBackgroundColor, 0.2)),
                 child: Center(
                   child: state is MakeOrdersLoaded
                       ? Text("\$${state.totalCost.toStringAsFixed(2)}")
@@ -252,8 +261,12 @@ class _OrdersScreen extends State<OrdersScreen>
           height: constraints.maxHeight / 2 - _viewSelectedButtonBarHeight,
           child: Container(
             decoration: BoxDecoration(
-                border:
-                    Border(top: BorderSide(width: 0.3, color: Colors.white))),
+                border: Border(
+                    top: BorderSide(
+                        width: 0.3,
+                        color: Theme.of(context).brightness == Brightness.light
+                            ? Colors.black
+                            : Colors.white))),
             child: FormBuilder(
               key: _saveSelectedForm,
               child: ListView.builder(

@@ -102,10 +102,7 @@ class _AddCategory extends State<AddCategory> {
                           name: 'name',
 
                           decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Colors.grey,
-                                    style: BorderStyle.solid)),
+                            border: AppTheme.myTheme.inputDecorationTheme.border,
                             labelText: 'Category Name',
                           ),
 

@@ -1,3 +1,4 @@
+import 'package:OrderClerk/assets/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:getwidget/getwidget.dart';
@@ -91,7 +92,8 @@ class _DetailCategoryState extends State<DetailCategory> {
                   confirmDeleteVisible
                       ? Center(
                           child: Container(
-                            color: Color.fromRGBO(50, 50, 50, 1.0),
+                            color: AppTheme.darken(
+                                AppTheme.myTheme.scaffoldBackgroundColor),
                             width: constraints.maxWidth - 200,
                             height: constraints.maxHeight - 200,
                             child: Column(
@@ -149,7 +151,7 @@ class _DetailCategoryState extends State<DetailCategory> {
             : Container(),
         body: Container(
           padding: EdgeInsets.fromLTRB(5, 2, 5, 5),
-          color: Color.fromRGBO(50, 50, 50, 1),
+          color: AppTheme.myTheme.scaffoldBackgroundColor,
           width: constraints.maxWidth,
           height: constraints.maxHeight,
           child: SingleChildScrollView(
@@ -169,9 +171,9 @@ class _DetailCategoryState extends State<DetailCategory> {
                         tooltip: "Close",
                         onPressed: widget.closeCallback,
                         icon: Icon(Icons.close)),
-                    Text("Category Details",
-                        style: TextStyle(
-                            color: Color.fromRGBO(110, 110, 110, 1.0))),
+                    Text(
+                      "Category Details",
+                    ),
                     //delete Category
                     Row(
                       mainAxisSize: MainAxisSize.min,
@@ -182,7 +184,8 @@ class _DetailCategoryState extends State<DetailCategory> {
                             final snackBar = SnackBar(
                                 elevation: 5,
                                 behavior: SnackBarBehavior.fixed,
-                                backgroundColor: Colors.grey[850],
+                                backgroundColor:
+                                    AppTheme.myTheme.scaffoldBackgroundColor,
                                 padding: EdgeInsets.all(00),
                                 duration: Duration(days: 365),
                                 content: EditCategory(
@@ -223,12 +226,16 @@ class _DetailCategoryState extends State<DetailCategory> {
                   child: RichText(
                     text: TextSpan(
                         style: TextStyle(
-                            fontWeight: FontWeight.normal, fontSize: 18),
+                            fontWeight: FontWeight.normal,
+                            fontSize: 18,
+                            color:
+                                Theme.of(context).textTheme.bodyText1!.color),
                         children: [
                           TextSpan(
                             text: "Category ID: ",
                             style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.w600),
+                                fontSize: 18, fontWeight: FontWeight.w600,color:
+                                  Theme.of(context).textTheme.bodyText1!.color),
                           ),
                           TextSpan(
                             text: "${widget.category.id}",
@@ -241,12 +248,16 @@ class _DetailCategoryState extends State<DetailCategory> {
                     child: RichText(
                       text: TextSpan(
                           style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 18),
+                              fontWeight: FontWeight.normal,
+                              fontSize: 18,
+                              color:
+                                  Theme.of(context).textTheme.bodyText1!.color),
                           children: [
                             TextSpan(
                               text: "Category Name: ",
                               style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w600),
+                                  fontSize: 18, fontWeight: FontWeight.w600,color:
+                                  Theme.of(context).textTheme.bodyText1!.color),
                             ),
                             TextSpan(
                               text: "${widget.category.name}",
@@ -262,11 +273,13 @@ class _DetailCategoryState extends State<DetailCategory> {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     "Items in ${widget.category.name} category: ",
-                    style: TextStyle(fontWeight: FontWeight.w600),
+                    style: TextStyle(fontWeight: FontWeight.w600,color:
+                                  Theme.of(context).textTheme.bodyText1!.color),
                   ),
                 ),
                 Container(
-                  color: Color.fromRGBO(30, 30, 30, 1),
+                  color: AppTheme.darken(
+                      AppTheme.myTheme.scaffoldBackgroundColor, 0.2),
                   width: constraints.maxWidth - (_itemDetailPadding.left * 2),
                   height: 600,
                   child: ListView.separated(
@@ -280,13 +293,13 @@ class _DetailCategoryState extends State<DetailCategory> {
                             trailing: RichText(
                               text: TextSpan(
                                   style: TextStyle(
-                                      color: Color.fromRGBO(100, 100, 100, 1),
+                                      color:
+                                  Theme.of(context).textTheme.bodyText1!.color,
                                       fontWeight: FontWeight.normal),
                                   text: "Pkg Size:  ",
                                   children: [
                                     TextSpan(
                                       style: TextStyle(
-                                          color: Colors.white,
                                           fontWeight: FontWeight.bold),
                                       text:
                                           "${widget.category.items[index]!.packageSize}",
