@@ -20,5 +20,6 @@ class ViewOrderEvent extends NavbarEvent {}
 class MakeOrderEvent extends NavbarEvent {}
 
 class ViewCategoryEvent extends NavbarEvent {}
+class ViewSettingsEvent extends NavbarEvent {}
 
 class ViewFormulaEvent extends NavbarEvent {}

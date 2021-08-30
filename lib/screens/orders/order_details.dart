@@ -329,6 +329,36 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                                               tooltip:
                                                                   "Cancelled",
                                                             ),
+                                                      //Expired Button
+                                                      orderCluster!
+                                                                  .orders[
+                                                                      orderChosenIndex]
+                                                                  .isExpired ??
+                                                              false
+                                                          ? IconButton(
+                                                              onPressed: () {
+                                                                unexpireOrder(
+                                                                    orderChosen);
+                                                              },
+                                                              icon: const Icon(
+                                                                Icons
+                                                                    .cancel_rounded,
+                                                                color:
+                                                                    Colors.red,
+                                                              ),
+                                                              tooltip:
+                                                                  "Revert Expiration",
+                                                            )
+                                                          : IconButton(
+                                                              onPressed: () {
+                                                                expireOrder(
+                                                                    orderChosen);
+                                                              },
+                                                              icon: const Icon(Icons
+                                                                  .cancel_rounded),
+                                                              tooltip:
+                                                                  "Expired",
+                                                            ),
                                                     ],
                                                   ),
                                                 ],
@@ -743,6 +773,22 @@ class _DetailsOrderState extends State<DetailsOrder> {
     refresh();
   }
 
+  void expireOrder(Order order) {
+    //updates the order record
+    DatabaseHelper.instance.update({"expired": 1}, "orders",
+        "id = ? AND itemID = ?", [order.id, order.item!.id]);
+
+    refresh();
+  }
+
+  void unexpireOrder(Order order) {
+    //updates the order record
+    DatabaseHelper.instance.update({"expired": 0}, "orders",
+        "id = ? AND itemID = ?", [order.id, order.item!.id]);
+
+    refresh();
+  }
+
   void refresh() {
     setState(() {
       refreshCallback();
@@ -988,7 +1034,7 @@ class _EditOrderNotesState extends State<EditOrderNotes> {
                     },
                   ),
                   GFButton(
-                    color: AppTheme.myTheme.accentColor,
+                      color: AppTheme.myTheme.accentColor,
                       child: Text("Undo"),
                       onPressed: () {
                         notesTextFieldController.text =

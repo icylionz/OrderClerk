@@ -129,7 +129,7 @@ class _ItemsScreen extends State<ItemsScreen>
             : Container(),
         body: Scaffold(
             floatingActionButton: FloatingActionButton(
-              backgroundColor: Colors.transparent,
+              backgroundColor: Theme.of(context).accentColor,
               child: Icon(Icons.add),
               onPressed: () {
                 setState(() {

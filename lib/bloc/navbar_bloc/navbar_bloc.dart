@@ -16,6 +16,7 @@ class NavbarBloc extends Bloc<NavbarEvent, NavbarState> {
     if (event is ViewOrderEvent) yield ViewOrderState();
     if (event is MakeOrderEvent) yield MakeOrderState();
     if (event is ViewCategoryEvent) yield ViewCategoryState();
+    if (event is ViewSettingsEvent) yield ViewSettingsState();
     if (event is ViewFormulaEvent) yield ViewFormulaState();
     
   }

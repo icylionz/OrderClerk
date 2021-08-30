@@ -32,7 +32,7 @@ Future main() async {
         Formula(expString: expString, id: id, vari: vari),
     Category: () => Category(),
   };
-  final defaultItemFilter = {
+  final defaultConfig = {
     "columns": [
       {
         "id": true,
@@ -58,14 +58,24 @@ Future main() async {
         "lastOrderReceivedDateCancelled": false,
         "toBeOrdered": true,
       }
-    ]
+    ],
+    "darkMode": false,
+    "accentColor": {"red": 0, "green": 0, "blue": 0},
+    "companyLogoPath": ""
   };
   //create necessary files in directory
-  FileHandler.createFile(
-      fileName: "item_filter.json", content: defaultItemFilter);
+  FileHandler.createFile(fileName: "config.json", content: defaultConfig);
 
   ItemFilter.columns =
-      json.decode(await FileHandler.itemFilterFile.readAsString())["columns"];
+      json.decode(await FileHandler.configFile.readAsString())["columns"];
+  var tempAccent =
+      json.decode(await FileHandler.configFile.readAsString())["accentColor"];
+  Settings.accentColor = Color.fromRGBO(
+      tempAccent["red"], tempAccent["green"], tempAccent["blue"], 1);
+  Settings.companyLogoPath = json
+      .decode(await FileHandler.configFile.readAsString())["companyLogoPath"];
+  Settings.darkMode =
+      json.decode(await FileHandler.configFile.readAsString())["darkMode"];
   runApp(MyApp());
   if (Platform.isWindows || Platform.isLinux) {
     // Initialize FFI
@@ -130,7 +140,12 @@ class _MyAppState extends State<MyApp> {
               create: (context) =>
                   CategoriesTableBloc(source: CategoriesSource())),
         ],
-        child: HomePage(),
+        child: HomePage(
+          refreshCallback: () {
+            print("redrawing everything");
+            setState(() {});
+          },
+        ),
       ),
     );
   }

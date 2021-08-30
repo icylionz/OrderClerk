@@ -6,3 +6,4 @@ export 'package:OrderClerk/models/Formula.dart';
 export 'package:OrderClerk/models/Filter.dart';
 export 'package:OrderClerk/models/SelectedItem.dart';
 export 'package:OrderClerk/models/OrderCluster.dart';
+export 'package:OrderClerk/models/Settings.dart';

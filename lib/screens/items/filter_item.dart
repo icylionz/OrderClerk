@@ -387,85 +387,85 @@ class _FilterItem extends State<FilterItem> {
                     scrollDirection: Axis.vertical,
                     children: [
                       ColumnsChoiceChip(
-                          name: "id", display: "ID", callback: refresh),
+                          name: "id", display: "ID", refreshCallback: refresh),
                       ColumnsChoiceChip(
-                          name: "name", display: "Name", callback: refresh),
+                          name: "name", display: "Name", refreshCallback: refresh),
                       ColumnsChoiceChip(
                           name: "distributorID",
                           display: "Distributor ID",
-                          callback: refresh),
+                          refreshCallback: refresh),
                       ColumnsChoiceChip(
                           name: "distributorName",
                           display: "Distributor Name",
-                          callback: refresh),
+                          refreshCallback: refresh),
                       ColumnsChoiceChip(
                           name: "costPrice",
                           display: "Cost Price",
-                          callback: refresh),
+                          refreshCallback: refresh),
                       ColumnsChoiceChip(
                           name: "sellingPrice",
                           display: "Selling Price",
-                          callback: refresh),
+                          refreshCallback: refresh),
                       ColumnsChoiceChip(
                           name: "categoryID",
                           display: "Category ID",
-                          callback: refresh),
+                          refreshCallback: refresh),
                       ColumnsChoiceChip(
                           name: "categoryName",
                           display: "Category Name",
-                          callback: refresh),
+                          refreshCallback: refresh),
                       ColumnsChoiceChip(
                           name: "formulaID",
                           display: "Formula ID",
-                          callback: refresh),
+                          refreshCallback: refresh),
                       ColumnsChoiceChip(
                           name: "formulaVari",
                           display: "Formula Variable",
-                          callback: refresh),
+                          refreshCallback: refresh),
                       ColumnsChoiceChip(
                           name: "formulaExpression",
                           display: "Formula Expression",
-                          callback: refresh),
+                          refreshCallback: refresh),
                       ColumnsChoiceChip(
                           name: "lastOrderMadeID",
                           display: "Last Order Made ID",
-                          callback: refresh),
+                          refreshCallback: refresh),
                       ColumnsChoiceChip(
                           name: "lastOrderMadeDateOrdered",
                           display: "Last Order Made Date Ordered",
-                          callback: refresh),
+                          refreshCallback: refresh),
                       ColumnsChoiceChip(
                           name: "lastOrderMadeDateReceived",
                           display: "Last Order Made Date Received",
-                          callback: refresh),
+                          refreshCallback: refresh),
                       ColumnsChoiceChip(
                           name: "lastOrderMadeDateCancelled",
                           display: "Last Order Made Date Cancelled",
-                          callback: refresh),
+                          refreshCallback: refresh),
                       ColumnsChoiceChip(
                           name: "lastOrderReceivedID",
                           display: "Last Order Received ID",
-                          callback: refresh),
+                          refreshCallback: refresh),
                       ColumnsChoiceChip(
                           name: "lastOrderReceivedDateOrdered",
                           display: "Last Order Received Date Ordered",
-                          callback: refresh),
+                          refreshCallback: refresh),
                       ColumnsChoiceChip(
                           name: "lastOrderReceivedDateReceived",
                           display: "Last Order Received Date Received",
-                          callback: refresh),
+                          refreshCallback: refresh),
                       ColumnsChoiceChip(
                           name: "lastOrderReceivedExpirationDate",
                           display: "Last Order Received Expiration Date",
-                          callback: refresh),
+                          refreshCallback: refresh),
                       ColumnsChoiceChip(
                           name: "lastOrderReceivedDateCancelled",
                           display: "Last Order Received Date Cancelled",
-                          callback: refresh),
+                          refreshCallback: refresh),
                       ColumnsChoiceChip(
                           name: "toBeOrdered",
                           display: "To Be Ordered",
-                          callback: refresh),
+                          refreshCallback: refresh),
                     ],
                   )),
             )

@@ -3,7 +3,7 @@ import 'package:path/path.dart' as p;
 import 'dart:io';
 
 class FileHandler {
-  static File itemFilterFile = new File("/");
+  static File configFile = new File("/");
   static Directory dir =
       new Directory(File(p.relative(Directory("lib/data").path)).absolute.path);
 
@@ -12,9 +12,9 @@ class FileHandler {
     if (!file.existsSync()) {
       file.createSync();
       file.writeAsStringSync(json.encode(content));
-      itemFilterFile = File(file.absolute.path);
+      configFile = File(file.absolute.path);
     } else {
-      itemFilterFile = File(file.absolute.path);
+      configFile = File(file.absolute.path);
     }
   }
 

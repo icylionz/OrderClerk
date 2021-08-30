@@ -28,7 +28,7 @@ packages:
       name: bloc
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "7.0.0"
+    version: "7.1.0"
   boolean_selector:
     dependency: transitive
     description:
@@ -223,6 +223,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "7.1.0"
+  flutter_circle_color_picker:
+    dependency: "direct main"
+    description:
+      name: flutter_circle_color_picker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.0"
   flutter_form_builder:
     dependency: "direct main"
     description:
@@ -377,7 +384,7 @@ packages:
       name: package_info_plus
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.4"
+    version: "1.0.5"
   package_info_plus_linux:
     dependency: transitive
     description:
@@ -489,7 +496,7 @@ packages:
       name: platform
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.0"
+    version: "3.0.2"
   plugin_platform_interface:
     dependency: transitive
     description:
@@ -648,49 +655,49 @@ packages:
       name: syncfusion_flutter_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "19.2.55"
+    version: "19.2.56"
   syncfusion_flutter_datagrid:
     dependency: "direct main"
     description:
       name: syncfusion_flutter_datagrid
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "19.2.55-beta"
+    version: "19.2.56-beta"
   syncfusion_flutter_pdf:
     dependency: transitive
     description:
       name: syncfusion_flutter_pdf
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "19.2.55-beta"
+    version: "19.2.56-beta.1"
   syncfusion_flutter_pdfviewer:
     dependency: "direct main"
     description:
       name: syncfusion_flutter_pdfviewer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "19.2.55-beta"
+    version: "19.2.56-beta"
   syncfusion_flutter_pdfviewer_macos:
     dependency: transitive
     description:
       name: syncfusion_flutter_pdfviewer_macos
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "19.2.55-beta"
+    version: "19.2.56-beta"
   syncfusion_flutter_pdfviewer_platform_interface:
     dependency: transitive
     description:
       name: syncfusion_flutter_pdfviewer_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "19.2.55-beta"
+    version: "19.2.56-beta"
   syncfusion_flutter_pdfviewer_web:
     dependency: transitive
     description:
       name: syncfusion_flutter_pdfviewer_web
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "19.2.55-beta"
+    version: "19.2.56-beta"
   synchronized:
     dependency: transitive
     description:
@@ -760,7 +767,7 @@ packages:
       name: url_launcher_windows
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.1"
+    version: "2.0.2"
   vector_math:
     dependency: transitive
     description:

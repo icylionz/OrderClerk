@@ -8,6 +8,10 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'nav_bar.dart';
 
 class HomePage extends StatefulWidget {
+  final VoidCallback refreshCallback;
+
+  HomePage({Key? key, required this.refreshCallback}) : super(key: key);
+  @override
   State<StatefulWidget> createState() {
     return _HomePage();
   }
@@ -47,6 +51,10 @@ class _HomePage extends State<HomePage> {
                     return OrdersScreen();
                   else if (state is ViewCategoryState)
                     return CategoriesScreen();
+                  else if (state is ViewSettingsState)
+                    return SettingsScreen(
+                      refreshCallback: widget.refreshCallback,
+                    );
                   else
                     return Container(
                       child: Text("Empty"),

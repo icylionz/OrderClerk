@@ -227,7 +227,6 @@ class _DetailItemState extends State<DetailItem> {
                           },
                           icon: Icon(
                             Icons.edit,
-                            color: Colors.white,
                           ),
                         ),
                         IconButton(
@@ -254,8 +253,10 @@ class _DetailItemState extends State<DetailItem> {
                   child: RichText(
                     text: TextSpan(
                         style: TextStyle(
-                            fontWeight: FontWeight.normal, fontSize: 18,color:
-                                  Theme.of(context).textTheme.bodyText1!.color),
+                            fontWeight: FontWeight.normal,
+                            fontSize: 18,
+                            color:
+                                Theme.of(context).textTheme.bodyText1!.color),
                         children: [
                           TextSpan(
                             text: "Item ID: ",
@@ -273,7 +274,9 @@ class _DetailItemState extends State<DetailItem> {
                     child: RichText(
                       text: TextSpan(
                           style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 18,color:
+                              fontWeight: FontWeight.normal,
+                              fontSize: 18,
+                              color:
                                   Theme.of(context).textTheme.bodyText1!.color),
                           children: [
                             TextSpan(
@@ -291,7 +294,9 @@ class _DetailItemState extends State<DetailItem> {
                     child: RichText(
                       text: TextSpan(
                           style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 18,color:
+                              fontWeight: FontWeight.normal,
+                              fontSize: 18,
+                              color:
                                   Theme.of(context).textTheme.bodyText1!.color),
                           children: [
                             TextSpan(
@@ -309,7 +314,9 @@ class _DetailItemState extends State<DetailItem> {
                     child: RichText(
                       text: TextSpan(
                           style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 18,color:
+                              fontWeight: FontWeight.normal,
+                              fontSize: 18,
+                              color:
                                   Theme.of(context).textTheme.bodyText1!.color),
                           children: [
                             TextSpan(
@@ -327,7 +334,9 @@ class _DetailItemState extends State<DetailItem> {
                     child: RichText(
                       text: TextSpan(
                           style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 18,color:
+                              fontWeight: FontWeight.normal,
+                              fontSize: 18,
+                              color:
                                   Theme.of(context).textTheme.bodyText1!.color),
                           children: [
                             TextSpan(
@@ -345,7 +354,9 @@ class _DetailItemState extends State<DetailItem> {
                     child: RichText(
                       text: TextSpan(
                           style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 18,color:
+                              fontWeight: FontWeight.normal,
+                              fontSize: 18,
+                              color:
                                   Theme.of(context).textTheme.bodyText1!.color),
                           children: [
                             TextSpan(
@@ -363,7 +374,9 @@ class _DetailItemState extends State<DetailItem> {
                     child: RichText(
                       text: TextSpan(
                           style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 18,color:
+                              fontWeight: FontWeight.normal,
+                              fontSize: 18,
+                              color:
                                   Theme.of(context).textTheme.bodyText1!.color),
                           children: [
                             TextSpan(
@@ -382,7 +395,9 @@ class _DetailItemState extends State<DetailItem> {
                     child: RichText(
                       text: TextSpan(
                           style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 18,color:
+                              fontWeight: FontWeight.normal,
+                              fontSize: 18,
+                              color:
                                   Theme.of(context).textTheme.bodyText1!.color),
                           children: [
                             TextSpan(
@@ -402,7 +417,9 @@ class _DetailItemState extends State<DetailItem> {
                     child: RichText(
                       text: TextSpan(
                           style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 18,color:
+                              fontWeight: FontWeight.normal,
+                              fontSize: 18,
+                              color:
                                   Theme.of(context).textTheme.bodyText1!.color),
                           children: [
                             TextSpan(
@@ -422,7 +439,9 @@ class _DetailItemState extends State<DetailItem> {
                     child: RichText(
                       text: TextSpan(
                           style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 18,color:
+                              fontWeight: FontWeight.normal,
+                              fontSize: 18,
+                              color:
                                   Theme.of(context).textTheme.bodyText1!.color),
                           children: [
                             TextSpan(
@@ -442,7 +461,9 @@ class _DetailItemState extends State<DetailItem> {
                     child: RichText(
                       text: TextSpan(
                           style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 18,color:
+                              fontWeight: FontWeight.normal,
+                              fontSize: 18,
+                              color:
                                   Theme.of(context).textTheme.bodyText1!.color),
                           children: [
                             TextSpan(

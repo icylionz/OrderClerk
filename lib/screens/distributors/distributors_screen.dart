@@ -104,7 +104,7 @@ class _DistributorsScreen extends State<DistributorsScreen> {
           body: Scaffold(
             key: _distributorsView,
             floatingActionButton: FloatingActionButton(
-              backgroundColor: Colors.transparent,
+              backgroundColor: Theme.of(context).accentColor,
               child: Icon(Icons.add),
               onPressed: () {
                 setState(() {

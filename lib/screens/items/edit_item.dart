@@ -217,13 +217,12 @@ class _EditItem extends State<EditItem> {
                       height: 40,
                       child: FormBuilderDropdown(
                         name: 'categoryID',
-                        initialValue: item.category,
+                        initialValue: item.category?.id,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(5),
                           border: AppTheme.myTheme.inputDecorationTheme.border,
                           labelText: 'Category',
                         ),
-                        // initialValue: 'Male',
                         allowClear: true,
                         hint: Text('Select Category'),
                         items: CategoriesSource.data

@@ -18,6 +18,7 @@ class NavBar extends StatefulWidget {
 
 class _NavBar extends State<NavBar> {
   final _tileMargin = EdgeInsets.fromLTRB(20.0, 10.0, 0.0, 10.0);
+
   @override
   Widget build(BuildContext context) {
     return Drawer(child: LayoutBuilder(
@@ -43,19 +44,29 @@ class _NavBar extends State<NavBar> {
                 data: Theme.of(context)
                     .copyWith(dividerColor: Colors.transparent),
                 child: ExpansionTile(
+                  iconColor: Theme.of(context).accentColor,
                   tilePadding: _tileMargin,
                   trailing: SizedBox.shrink(),
                   title: Text("Orders",
                       style: AppTheme.myTheme.textTheme.headline6),
-                  leading: Icon(ModernPictograms.basket_alt),
+                  leading: Icon(
+                    ModernPictograms.basket_alt,
+                  ),
                   children: [
-                    Divider(),
+                    Divider(
+                      indent: 10,
+                      endIndent: 10,
+                      color: Theme.of(context).accentColor,
+                      thickness: 0.5,
+                    ),
                     _buildBigNavMenuItem(
+                      smallSize: true,
                       event: ViewOrderEvent(),
                       tooltip: "View Orders",
                       icon: Icons.visibility,
                     ),
                     _buildBigNavMenuItem(
+                        smallSize: true,
                         event: MakeOrderEvent(),
                         tooltip: "Create Orders",
                         icon: Icons.add),
@@ -66,11 +77,15 @@ class _NavBar extends State<NavBar> {
                   event: ViewCategoryEvent(),
                   tooltip: "Categories",
                   icon: Linecons.tag),
+              _buildBigNavMenuItem(
+                  event: ViewSettingsEvent(),
+                  tooltip: "Settings",
+                  icon: Icons.settings),
             ],
           );
         }
         if (constraints.maxWidth <= 170) {
-          ListView(
+          return ListView(
             children: [
               DrawerHeader(
                 child: Icon(Icons.ac_unit),
@@ -91,9 +106,17 @@ class _NavBar extends State<NavBar> {
                   trailing: SizedBox.shrink(),
                   title: Text("Orders",
                       style: AppTheme.myTheme.textTheme.headline6),
-                  leading: Icon(ModernPictograms.basket_alt),
+                  leading: Icon(
+                    ModernPictograms.basket_alt,
+                    color: AppTheme.myTheme.accentColor,
+                  ),
                   children: [
-                    Divider(),
+                    Divider(
+                      indent: 10,
+                      endIndent: 10,
+                      color: AppTheme.myTheme.accentColor,
+                      thickness: 0.5,
+                    ),
                     _buildNavMenuItem(
                       event: ViewOrderEvent(),
                       tooltip: "View Orders",
@@ -110,6 +133,10 @@ class _NavBar extends State<NavBar> {
                   event: ViewCategoryEvent(),
                   tooltip: "Categories",
                   icon: Linecons.tag),
+              _buildNavMenuItem(
+                  event: ViewSettingsEvent(),
+                  tooltip: "Settings",
+                  icon: Icons.settings),
             ],
           );
         }
@@ -132,9 +159,17 @@ class _NavBar extends State<NavBar> {
               child: ExpansionTile(
                 tilePadding: _tileMargin,
                 trailing: SizedBox.shrink(),
-                title: Icon(ModernPictograms.basket_alt),
+                title: Icon(
+                  ModernPictograms.basket_alt,
+                ),
+                expandedCrossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Divider(),
+                  Divider(
+                    indent: 10,
+                    endIndent: 10,
+                    color: AppTheme.myTheme.accentColor,
+                    thickness: 0.5,
+                  ),
                   _buildNavMenuItem(
                       event: ViewOrderEvent(),
                       tooltip: "View Orders",
@@ -150,6 +185,10 @@ class _NavBar extends State<NavBar> {
                 event: ViewCategoryEvent(),
                 tooltip: "Categories",
                 icon: Linecons.tag),
+            _buildNavMenuItem(
+                event: ViewSettingsEvent(),
+                tooltip: "Settings",
+                icon: Icons.settings),
           ],
         );
       },
@@ -159,26 +198,37 @@ class _NavBar extends State<NavBar> {
   Widget _buildNavMenuItem(
       {required NavbarEvent event,
       required String tooltip,
-      required IconData icon}) {
+      required IconData icon,
+      bool smallSize = false}) {
     return Padding(
       padding: _tileMargin,
       child: IconButton(
-          icon: Icon(icon), tooltip: tooltip, onPressed: () => changeTo(event)),
+          icon: Icon(
+            icon,
+            size: smallSize ? 20 : 24,
+          ),
+          tooltip: tooltip,
+          onPressed: () => changeTo(event)),
     );
   }
 
   Widget _buildBigNavMenuItem(
       {required NavbarEvent event,
       required String tooltip,
-      required IconData icon}) {
+      required IconData icon,
+      bool smallSize = false}) {
     return ListTile(
+      horizontalTitleGap: smallSize ? 0 : 16,
       contentPadding: _tileMargin,
       leading: Icon(
         icon,
+        size: smallSize ? 20 : 24,
       ),
       title: Text(
         tooltip,
-        style: AppTheme.myTheme.textTheme.headline6,
+        style: smallSize
+            ? AppTheme.myTheme.textTheme.bodyText2
+            : AppTheme.myTheme.textTheme.headline6,
       ),
       onTap: () => changeTo(event),
     );

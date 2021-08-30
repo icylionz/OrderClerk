@@ -34,9 +34,9 @@ dependencies:
   path_provider: ^2.0.1
   object_mapper: ^1.1.0
   editable: ^2.0.0
-  flutter_bloc: ^7.0.0
+  flutter_bloc: ^7.1.0
   syncfusion_flutter_datagrid: ^19.1.64-beta
-  equatable: ^2.0.2
+  equatable: ^2.0.3
   flutter_form_builder: ^6.0.1
   fluttertoast: ^8.0.7
   fluttericon: ^2.0.0
@@ -53,6 +53,7 @@ dependencies:
   collection: ^1.15.0
   desktop_window: ^0.4.0
   win32: ^2.2.5
+  flutter_circle_color_picker: ^0.3.0
 
 dev_dependencies:
   flutter_test:

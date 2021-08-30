@@ -6,12 +6,12 @@ import 'package:OrderClerk/models/models.dart';
 class ColumnsChoiceChip extends StatefulWidget {
   final String name;
   final String display;
-  final VoidCallback callback;
+  final VoidCallback refreshCallback;
   const ColumnsChoiceChip(
       {Key? key,
       required this.name,
       required this.display,
-      required this.callback})
+      required this.refreshCallback})
       : super(key: key);
 
   @override
@@ -23,6 +23,11 @@ class _ColumnsChoiceChipState extends State<ColumnsChoiceChip> {
   Widget build(BuildContext context) {
     return GFButton(
       text: widget.display,
+      textStyle: TextStyle(
+          color: Theme.of(context).accentColor.computeLuminance() > 0.5
+              ? Colors.black
+              : Colors.white,
+          fontWeight: FontWeight.w600),
       color: ItemFilter.columns.first[widget.name]
           ? AppTheme.myTheme.accentColor
           : Theme.of(context).brightness == Brightness.dark
@@ -32,7 +37,8 @@ class _ColumnsChoiceChipState extends State<ColumnsChoiceChip> {
         setState(() {
           ItemFilter.columns.first[widget.name] =
               !ItemFilter.columns.first[widget.name];
-          widget.callback();
+          Settings.saveSettings();
+          widget.refreshCallback();
         });
       },
       elevation: 0,
