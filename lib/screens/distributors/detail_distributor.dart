@@ -1,4 +1,5 @@
 import 'package:OrderClerk/assets/styles/styles.dart';
+import 'package:OrderClerk/screens/confirmation_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:getwidget/getwidget.dart';
@@ -91,58 +92,37 @@ class _DetailDistributorState extends State<DetailDistributor> {
                   confirmDeleteVisible
                       ? Center(
                           child: Container(
-                            color: AppTheme.darken(
-                                AppTheme.myTheme.scaffoldBackgroundColor),
-                            width: constraints.maxWidth - 200,
-                            height: constraints.maxHeight - 200,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "Are you sure you want to delete Distributor #$distributorID?",
-                                  softWrap: true,
-                                ),
-                                Text(
-                                  "N.B This is not the same as cancelling the item!",
-                                  style: TextStyle(color: Colors.red),
-                                  softWrap: true,
-                                ),
-                                Center(
-                                  child: ButtonBar(
-                                    children: [
-                                      //yes button
-                                      GFButton(
-                                        onPressed: () {
-                                          if (!isDistributorUsed(
-                                              distributor: distributor)) {
-                                            deleteDistributor(distributorID);
-                                            setState(callback);
-                                          } else
-                                            _showToast(
-                                                child: Text(
-                                                    "You cannot delete this distributor because it is being used by item records. Editing the distributor's information is a better solution."),
-                                                backgroundColor: Colors.red,
-                                                duration: 5);
-                                          resetOverlay();
-                                        },
-                                        child: Text("Yes"),
-                                      ),
-                                      //no button
-                                      GFButton(
-                                        onPressed: () {
-                                          resetOverlay();
-                                        },
-                                        child: Text("No"),
-                                        color: Colors.red,
-                                      )
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
+                          height: constraints.maxHeight / 1.5,
+                          width: constraints.maxWidth / 1.5,
+                          child: ConfirmationWidget(
+                            cancelFunction: resetOverlay,
+                            confirmFunction: () {
+                              if (!isDistributorUsed(
+                                  distributor: distributor)) {
+                                deleteDistributor(distributorID);
+                                setState(callback);
+                              } else
+                                _showToast(
+                                    child: Text(
+                                        "You cannot delete this distributor because it is being used by item records. Editing the distributor's information is a better solution."),
+                                    backgroundColor: Colors.red,
+                                    duration: 5);
+                              resetOverlay();
+                            },
+                            backgroundColor:
+                                AppTheme.myTheme.scaffoldBackgroundColor,
+                            textDialog: RichText(
+                                text: TextSpan(children: [
+                              TextSpan(
+                                  text:
+                                      "Are you sure you want to delete Distributor #$distributorID?\n"),
+                              TextSpan(
+                                text: "N.B This is cannot be undone!",
+                                style: TextStyle(color: Colors.red),
+                              )
+                            ])),
                           ),
-                        )
+                        ))
                       : editOverlayVisible
                           ? Center(
                               child: Container(

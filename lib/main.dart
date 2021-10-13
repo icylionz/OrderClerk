@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:object_mapper/object_mapper.dart';
 import 'package:OrderClerk/models/models.dart';
 import 'assets/styles/styles.dart';
@@ -15,10 +16,6 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:sqflite/sqflite.dart';
 import 'bloc/order_table_bloc/make_orders_bloc.dart';
 import 'package:desktop_window/desktop_window.dart';
-import 'dart:ffi';
-
-import 'package:ffi/ffi.dart';
-import 'package:win32/win32.dart';
 
 Future main() async {
   Mappable.factories = {
@@ -64,18 +61,32 @@ Future main() async {
     "companyLogoPath": ""
   };
   //create necessary files in directory
-  FileHandler.createFile(fileName: "config.json", content: defaultConfig);
+  FileHandler.createFile(
+      fileName: "config.json", content: json.encode(defaultConfig));
 
   ItemFilter.columns =
-      json.decode(await FileHandler.configFile.readAsString())["columns"];
+      json.decode(await Settings.configFile.readAsString())["columns"];
   var tempAccent =
-      json.decode(await FileHandler.configFile.readAsString())["accentColor"];
+      json.decode(await Settings.configFile.readAsString())["accentColor"];
   Settings.accentColor = Color.fromRGBO(
       tempAccent["red"], tempAccent["green"], tempAccent["blue"], 1);
-  Settings.companyLogoPath = json
-      .decode(await FileHandler.configFile.readAsString())["companyLogoPath"];
+  Settings.companyLogoPath =
+      json.decode(await Settings.configFile.readAsString())["companyLogoPath"];
+
+  (Settings.companyLogoPath == "") ? Settings.companyLogoPath = null : null;
+  Settings.companyLogo = Settings.companyLogoPath != null
+      ? Image.file(
+          File(Settings.companyLogoPath!),
+          errorBuilder:
+              (BuildContext context, Object exception, StackTrace? stackTrace) {
+            print(exception);
+            return Icon(FontAwesome5.user_circle);
+          },
+        )
+      : null;
+
   Settings.darkMode =
-      json.decode(await FileHandler.configFile.readAsString())["darkMode"];
+      json.decode(await Settings.configFile.readAsString())["darkMode"];
   runApp(MyApp());
   if (Platform.isWindows || Platform.isLinux) {
     // Initialize FFI

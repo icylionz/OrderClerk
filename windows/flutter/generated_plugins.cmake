@@ -3,9 +3,8 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+  desktop_drop
   desktop_window
-  file_selector_windows
-  url_launcher_windows
 )
 
 set(PLUGIN_BUNDLED_LIBRARIES)

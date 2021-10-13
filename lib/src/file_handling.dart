@@ -3,18 +3,17 @@ import 'package:path/path.dart' as p;
 import 'dart:io';
 
 class FileHandler {
-  static File configFile = new File("/");
-  static Directory dir =
+  static final Directory dir =
       new Directory(File(p.relative(Directory("lib/data").path)).absolute.path);
 
-  static void createFile({required String fileName, var content}) {
-    File file = new File(p.relative(dir.path) + "/" + fileName);
+  static void createFile(
+      {required String fileName, var content, bool writeAsString = true}) {
+    print(Directory.current);
+    File file = new File(p.join(FileHandler.dir.path, fileName));
     if (!file.existsSync()) {
+      print("Showing file path: ${file.path}");
       file.createSync();
-      file.writeAsStringSync(json.encode(content));
-      configFile = File(file.absolute.path);
-    } else {
-      configFile = File(file.absolute.path);
+      writeAsString ? file.writeAsString(content) : file.writeAsBytes(content);
     }
   }
 

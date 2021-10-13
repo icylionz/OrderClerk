@@ -1,4 +1,5 @@
 import 'package:OrderClerk/assets/styles/styles.dart';
+import 'package:OrderClerk/screens/confirmation_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:getwidget/getwidget.dart';
@@ -92,60 +93,38 @@ class _DetailCategoryState extends State<DetailCategory> {
                   confirmDeleteVisible
                       ? Center(
                           child: Container(
-                            color: AppTheme.darken(
-                                AppTheme.myTheme.scaffoldBackgroundColor),
-                            width: constraints.maxWidth - 200,
-                            height: constraints.maxHeight - 200,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "Are you sure you want to delete Category #${widget.categoryID}?",
-                                  softWrap: true,
-                                ),
-                                Text(
-                                  "N.B This is not the same as cancelling the item!",
-                                  style: TextStyle(color: Colors.red),
-                                  softWrap: true,
-                                ),
-                                Center(
-                                  child: ButtonBar(
-                                    children: [
-                                      //yes button
-                                      GFButton(
-                                        onPressed: () {
-                                          if (!isCategoryUsed(
-                                              category: widget.category)) {
-                                            deleteCategory(widget.categoryID);
-                                            setState(() {
-                                              widget.refreshCallback();
-                                              widget.closeCallback();
-                                            });
-                                          } else
-                                            _showToast(
-                                                child: Text(
-                                                    "You cannot delete this category because it is being used by item records. Editing the category's information is a better solution."),
-                                                backgroundColor: Colors.red,
-                                                duration: 5);
-                                        },
-                                        child: Text("Yes"),
-                                      ),
-                                      //no button
-                                      GFButton(
-                                        onPressed: () {
-                                          resetOverlay();
-                                        },
-                                        child: Text("No"),
-                                        color: Colors.red,
-                                      )
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
+                          height: constraints.maxHeight / 1.5,
+                          width: constraints.maxWidth / 1.5,
+                          child: ConfirmationWidget(
+                            cancelFunction: resetOverlay,
+                            confirmFunction: () {
+                              if (!isCategoryUsed(category: widget.category)) {
+                                deleteCategory(widget.categoryID);
+                                setState(() {
+                                  widget.refreshCallback();
+                                  widget.closeCallback();
+                                });
+                              } else
+                                _showToast(
+                                    child: Text(
+                                        "You cannot delete this category because it is being used by item records. Editing the category's information is a better solution."),
+                                    backgroundColor: Colors.red,
+                                    duration: 5);
+                            },
+                            backgroundColor:
+                                AppTheme.myTheme.scaffoldBackgroundColor,
+                            textDialog: RichText(
+                                text: TextSpan(children: [
+                              TextSpan(
+                                  text:
+                                      "Are you sure you want to delete Category #${widget.categoryID}\n"),
+                              TextSpan(
+                                text: "N.B This is cannot be undone!",
+                                style: TextStyle(color: Colors.red),
+                              )
+                            ])),
                           ),
-                        )
+                        ))
                       : Container()
                 ]))
             : Container(),
@@ -234,8 +213,12 @@ class _DetailCategoryState extends State<DetailCategory> {
                           TextSpan(
                             text: "Category ID: ",
                             style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.w600,color:
-                                  Theme.of(context).textTheme.bodyText1!.color),
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .bodyText1!
+                                    .color),
                           ),
                           TextSpan(
                             text: "${widget.category.id}",
@@ -256,8 +239,12 @@ class _DetailCategoryState extends State<DetailCategory> {
                             TextSpan(
                               text: "Category Name: ",
                               style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w600,color:
-                                  Theme.of(context).textTheme.bodyText1!.color),
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .bodyText1!
+                                      .color),
                             ),
                             TextSpan(
                               text: "${widget.category.name}",
@@ -273,8 +260,9 @@ class _DetailCategoryState extends State<DetailCategory> {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     "Items in ${widget.category.name} category: ",
-                    style: TextStyle(fontWeight: FontWeight.w600,color:
-                                  Theme.of(context).textTheme.bodyText1!.color),
+                    style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: Theme.of(context).textTheme.bodyText1!.color),
                   ),
                 ),
                 Container(
@@ -293,8 +281,10 @@ class _DetailCategoryState extends State<DetailCategory> {
                             trailing: RichText(
                               text: TextSpan(
                                   style: TextStyle(
-                                      color:
-                                  Theme.of(context).textTheme.bodyText1!.color,
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .bodyText1!
+                                          .color,
                                       fontWeight: FontWeight.normal),
                                   text: "Pkg Size:  ",
                                   children: [

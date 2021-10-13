@@ -1,6 +1,7 @@
 import 'dart:io';
 
-import 'package:filepicker_windows/filepicker_windows.dart';
+import 'package:OrderClerk/screens/confirmation_screen.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:fluttericon/modern_pictograms_icons.dart';
@@ -91,50 +92,34 @@ class _DetailsOrderState extends State<DetailsOrder> {
                   confirmDeleteVisible
                       ? Center(
                           child: Container(
-                            color: AppTheme.myTheme.scaffoldBackgroundColor,
-                            width: constraints.maxWidth - 200,
-                            height: constraints.maxHeight - 200,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "Are you sure you want to delete Order #$orderID?",
-                                  softWrap: true,
-                                ),
-                                Text(
-                                  "N.B This is not the same as cancelling the order!",
+                            height: constraints.maxHeight / 1.5,
+                            width: constraints.maxWidth / 1.5,
+                            child: ConfirmationWidget(
+                              cancelFunction: () {
+                                setState(() {
+                                  confirmDeleteVisible = false;
+                                });
+                              },
+                              confirmFunction: () {
+                                deleteOrder(orderID);
+                                setState(() {
+                                  widget.refreshCallback();
+                                  widget.closeCallback();
+                                });
+                              },
+                              backgroundColor:
+                                  AppTheme.myTheme.scaffoldBackgroundColor,
+                              textDialog: RichText(
+                                  text: TextSpan(children: [
+                                TextSpan(
+                                    text:
+                                        "Are you sure you want to delete Order #$orderID?\n"),
+                                TextSpan(
+                                  text:
+                                      "N.B This is not the same as cancelling the order!",
                                   style: TextStyle(color: Colors.red),
-                                  softWrap: true,
-                                ),
-                                Center(
-                                  child: ButtonBar(
-                                    children: [
-                                      //yes button
-                                      GFButton(
-                                        onPressed: () {
-                                          deleteOrder(orderID);
-                                          setState(() {
-                                            widget.refreshCallback();
-                                            widget.closeCallback();
-                                          });
-                                        },
-                                        child: Text("Yes"),
-                                      ),
-                                      //no button
-                                      GFButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            confirmDeleteVisible = false;
-                                          });
-                                        },
-                                        child: Text("No"),
-                                        color: Colors.red,
-                                      )
-                                    ],
-                                  ),
                                 )
-                              ],
+                              ])),
                             ),
                           ),
                         )
@@ -824,7 +809,7 @@ class _DetailsOrderState extends State<DetailsOrder> {
   }
 
   void exportPDF(OrderCluster order) {
-    _savePDFs(_createPDF(orderCluster!));
+    _savePDFs([_createPDF(orderCluster!)]);
   }
 
   Map<Distributor, pdf.Document> _createPDF(OrderCluster order) {
@@ -905,22 +890,25 @@ class _DetailsOrderState extends State<DetailsOrder> {
     return {orderCluster!.orders.first.item!.distributor!: orderPdf};
   }
 
-  _savePDFs(Map<Distributor, pdf.Document> doc) async {
-    SaveFilePicker? filePath;
+  _savePDFs(List<Map<Distributor, pdf.Document>> pdfDocs) async {
     File? file;
+    pdfDocs.forEach((doc) async {
+      //gets file from user
+      String? filePath = await FilePicker.platform.saveFile(
+          dialogTitle: "Select a location to save the file",
+          allowedExtensions: ["pdf"],
+          fileName:
+              "${doc.keys.first.name}_${DateTime.now().day}${DateTime.now().month}${DateTime.now().year}_${DateTime.now().hour}${DateTime.now().minute}${DateTime.now().second}",
+          type: FileType.any);
+      if (filePath != null) {
+        file = File(filePath);
 
-    //gets file from user
-    filePath = SaveFilePicker()
-      ..defaultExtension = "pdf"
-      ..filterSpecification = {"pdf": "*.pdf"}
-      ..fileName =
-          "${doc.keys.first.name}_${DateTime.now().day}${DateTime.now().month}${DateTime.now().year}_${DateTime.now().hour}${DateTime.now().minute}${DateTime.now().second}";
-    file = filePath.getFile();
-
-    //saves file
-    if (file != null) {
-      file.writeAsBytes(await doc.values.first.save());
-    }
+        //saves file
+        if (file != null) {
+          file!.writeAsBytes(await doc.values.first.save());
+        }
+      }
+    });
   }
 }
 

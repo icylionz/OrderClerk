@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:OrderClerk/assets/styles/styles.dart';
-import 'package:filepicker_windows/filepicker_windows.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
@@ -374,10 +374,11 @@ class _OrdersScreen extends State<OrdersScreen>
                 pdf.Header(
                     level: 2,
                     child: pdf.Text(
-                      "${distro.telephone} | ${distro.email} | ${distro.address}",
+                      "${distro.telephone ?? "Not Provided"} | ${distro.email ?? "Not Provided"} | ${distro.address ?? "Not Provided"}",
                       style: pdf.TextStyle(font: pdf.Font.helveticaBold()),
                     )),
                 pdf.Divider(color: _dividerColor),
+                //Column Headers
                 pdf.Row(
                     mainAxisAlignment: pdf.MainAxisAlignment.spaceBetween,
                     children: [
@@ -440,20 +441,22 @@ class _OrdersScreen extends State<OrdersScreen>
   }
 
   _savePDFs(List<Map<Distributor, pdf.Document>> pdfDocs) async {
-    SaveFilePicker? filePath;
     File? file;
     pdfDocs.forEach((doc) async {
       //gets file from user
-      filePath = SaveFilePicker()
-        ..defaultExtension = "pdf"
-        ..filterSpecification = {"pdf": "*.pdf"}
-        ..fileName =
-            "${doc.keys.first.name}_${DateTime.now().day}${DateTime.now().month}${DateTime.now().year}_${DateTime.now().hour}${DateTime.now().minute}${DateTime.now().second}";
-      file = filePath!.getFile();
+      String? filePath = await FilePicker.platform.saveFile(
+          dialogTitle: "Select a location to save the file",
+          allowedExtensions: ["pdf"],
+          fileName:
+              "${doc.keys.first.name}_${DateTime.now().day}${DateTime.now().month}${DateTime.now().year}_${DateTime.now().hour}${DateTime.now().minute}${DateTime.now().second}",
+          type: FileType.any);
+      if (filePath != null) {
+        file = File(filePath);
 
-      //saves file
-      if (file != null) {
-        file!.writeAsBytes(await doc.values.first.save());
+        //saves file
+        if (file != null) {
+          file!.writeAsBytes(await doc.values.first.save());
+        }
       }
     });
   }

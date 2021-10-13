@@ -1,3 +1,4 @@
+import 'package:OrderClerk/models/models.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,17 +22,16 @@ class _NavBar extends State<NavBar> {
 
   @override
   Widget build(BuildContext context) {
+    print(Settings.companyLogo);
     return Drawer(child: LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth > 170) {
           return ListView(
             children: [
               DrawerHeader(
-                child: Icon(
-                  FontAwesome5.user_circle,
-                  size: 50,
-                ),
-              ),
+                  child: ClipOval(
+                child: Settings.companyLogo ?? Icon(FontAwesome5.user_circle),
+              )),
               _buildBigNavMenuItem(
                   event: ViewItemEvent(),
                   tooltip: "Items",

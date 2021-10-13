@@ -1,14 +1,19 @@
+import 'dart:io';
+import 'package:path/path.dart' as p;
 import 'package:OrderClerk/assets/styles/styles.dart';
 import 'package:OrderClerk/models/models.dart';
+import 'package:OrderClerk/screens/drop_area.dart';
+import 'package:OrderClerk/src/file_handling.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_circle_color_picker/flutter_circle_color_picker.dart';
+import 'package:getwidget/components/button/gf_button.dart';
 import 'package:getwidget/components/toggle/gf_toggle.dart';
 
 class SettingsScreen extends StatefulWidget {
   final VoidCallback refreshCallback;
   SettingsScreen({Key? key, required this.refreshCallback}) : super(key: key);
-
+  File? tempStoredLogo;
   @override
   _SettingsScreenState createState() => _SettingsScreenState();
 }
@@ -18,6 +23,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       return Scaffold(
+          //Save button
           floatingActionButton: Container(
             width: 90,
             height: 50,
@@ -68,6 +74,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisSize: MainAxisSize.min,
                               children: [
+                                //Title
                                 Center(
                                   child: Text(
                                     "Settings",
@@ -86,7 +93,25 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
+                                        //Set Company Logo
                                         Text("Select Company Logo:"),
+                                        Container(
+                                            width: 400,
+                                            height: 200,
+                                            child: DropArea(
+                                              getFilesCallback: (files) {
+                                                print(
+                                                    "get files callback called with files: $files");
+                                                widget.tempStoredLogo =
+                                                    files.first;
+                                              },
+                                            )),
+                                        GFButton(
+                                          onPressed: uploadLogo,
+                                          text: "Upload",
+                                          icon: Icon(Icons.upload),color: Theme.of(context).accentColor,
+                                        ),
+                                        //Dark Mode
                                         Text("Toggle Dark Mode"),
                                         GFToggle(
                                             enabledTrackColor:
@@ -99,6 +124,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                               refresh();
                                             },
                                             value: Settings.darkModeVal),
+                                        //Accent Color Selection
                                         Text("Select Accent Color:"),
                                         CircleColorPicker(
                                           textStyle: TextStyle(
@@ -130,6 +156,28 @@ class _SettingsScreenState extends State<SettingsScreen> {
             },
           ));
     });
+  }
+
+  uploadLogo() async { // saves company logo
+    if (widget.tempStoredLogo != null) {
+      //delete the old image if it exists
+      if (Settings.companyLogoPath != null) {
+        File(Settings.companyLogoPath!).delete();
+      }
+      //create/overwrite a company logo file in the assets
+      FileHandler.createFile(
+          fileName: p.basename(widget.tempStoredLogo!.path),
+          content: await widget.tempStoredLogo!.readAsBytes(),
+          writeAsString: false);
+      // Updates the company logo path
+      Settings.companyLogoPath = p.join(FileHandler.dir.absolute.path,
+          p.basename(widget.tempStoredLogo!.path));
+      print(Settings.companyLogoPath);
+      //updates the company logo image
+      Settings.companyLogo = Image.file(File(Settings.companyLogoPath!));
+      Settings.saveSettings();
+      widget.refreshCallback();
+    }
   }
 
   changeAccent(Color color) {
